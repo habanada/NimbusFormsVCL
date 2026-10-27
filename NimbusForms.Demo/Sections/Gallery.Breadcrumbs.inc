@@ -1,0 +1,33 @@
+  LBreadcrumbPage := TTabSheet.Create(FTabControl);
+  LBreadcrumbPage.PageControl := FTabControl;
+  LBreadcrumbPage.Caption := SBreadcrumbTab;
+
+  LBreadcrumb := TThemedBreadcrumbBar.Create(LBreadcrumbPage);
+  LBreadcrumb.Parent := LBreadcrumbPage;
+  LBreadcrumb.SetBounds(P(18), P(28), P(750), P(34));
+  LBreadcrumb.Path := 'Projects\NimbusForms\Controls\BreadcrumbBar';
+  LBreadcrumb.Images := LMenuImages;
+  LBreadcrumb.Segments[0].ImageIndex := MenuDemoImageIndex(LMenuImages, 0);
+  LBreadcrumb.Segments[1].ImageIndex := MenuDemoImageIndex(LMenuImages, 1);
+  LBreadcrumb.ShowHint := True;
+  LBreadcrumb.Hint := SBreadcrumbHint;
+  LBreadcrumbChild := LBreadcrumb.Segments[0].Children.Add;
+  LBreadcrumbChild.Caption := 'NimbusForms';
+  LBreadcrumbChild.FullPath := 'Projects\NimbusForms';
+  LBreadcrumbChild := LBreadcrumb.Segments[0].Children.Add;
+  LBreadcrumbChild.Caption := 'Samples';
+  LBreadcrumbChild.FullPath := 'Projects\Samples';
+  LBreadcrumbChild := LBreadcrumb.Segments[1].Children.Add;
+  LBreadcrumbChild.Caption := 'Controls';
+  LBreadcrumbChild.FullPath := 'Projects\NimbusForms\Controls';
+  LBreadcrumbChild := LBreadcrumb.Segments[1].Children.Add;
+  LBreadcrumbChild.Caption := 'Themes';
+  LBreadcrumbChild.FullPath := 'Projects\NimbusForms\Themes';
+  LBreadcrumbChild := LBreadcrumb.Segments[2].Children.Add;
+  LBreadcrumbChild.Caption := 'BreadcrumbBar';
+  LBreadcrumbChild.FullPath := 'Projects\NimbusForms\Controls\BreadcrumbBar';
+  LBreadcrumbChild := LBreadcrumb.Segments[2].Children.Add;
+  LBreadcrumbChild.Caption := 'MenuBar';
+  LBreadcrumbChild.FullPath := 'Projects\NimbusForms\Controls\MenuBar';
+  FTabControl.SetTabClosable(LBreadcrumbPage, False);
+

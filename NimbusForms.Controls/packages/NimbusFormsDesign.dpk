@@ -1,0 +1,11 @@
+package NimbusFormsDesign;
+
+{$DESIGNONLY}
+{$IMPLICITBUILD ON}
+
+requires rtl, vcl, designide, NimbusFormsRuntime;
+
+contains
+  NimbusForms.Design.Register in 'NimbusForms.Design.Register.pas';
+
+end.

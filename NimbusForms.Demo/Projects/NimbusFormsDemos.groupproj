@@ -1,0 +1,50 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup><ProjectGuid>{0019673B-7D2E-CE39-B7AE-A0C7677693AB}</ProjectGuid></PropertyGroup>
+  <ItemGroup>
+    <Projects Include="NimbusStandardControls.dproj"><Dependencies/></Projects>
+    <Projects Include="NimbusCodeEditorBasic.dproj"><Dependencies/></Projects>
+    <Projects Include="NimbusCodeEditorStudio.dproj"><Dependencies/></Projects>
+    <Projects Include="NimbusHexEditorWorkspace.dproj"><Dependencies/></Projects>
+    <Projects Include="NimbusGridStudio.dproj"><Dependencies/></Projects>
+    <Projects Include="NimbusLogViewer.dproj"><Dependencies/></Projects>
+    <Projects Include="NimbusNotifications.dproj"><Dependencies/></Projects>
+    <Projects Include="NimbusPropertyGrid.dproj"><Dependencies/></Projects>
+    <Projects Include="NimbusCharts.dproj"><Dependencies/></Projects>
+  </ItemGroup>
+  <ProjectExtensions>
+    <Borland.Personality>Default.Personality.12</Borland.Personality>
+    <Borland.ProjectType/>
+    <BorlandProject><Default.Personality/></BorlandProject>
+  </ProjectExtensions>
+  <Target Name="NimbusStandardControls"><MSBuild Projects="NimbusStandardControls.dproj" Targets="Build"/></Target>
+  <Target Name="NimbusStandardControls:Clean"><MSBuild Projects="NimbusStandardControls.dproj" Targets="Clean"/></Target>
+  <Target Name="NimbusStandardControls:Make"><MSBuild Projects="NimbusStandardControls.dproj" Targets="Make"/></Target>
+  <Target Name="NimbusCodeEditorBasic"><MSBuild Projects="NimbusCodeEditorBasic.dproj" Targets="Build"/></Target>
+  <Target Name="NimbusCodeEditorBasic:Clean"><MSBuild Projects="NimbusCodeEditorBasic.dproj" Targets="Clean"/></Target>
+  <Target Name="NimbusCodeEditorBasic:Make"><MSBuild Projects="NimbusCodeEditorBasic.dproj" Targets="Make"/></Target>
+  <Target Name="NimbusCodeEditorStudio"><MSBuild Projects="NimbusCodeEditorStudio.dproj" Targets="Build"/></Target>
+  <Target Name="NimbusCodeEditorStudio:Clean"><MSBuild Projects="NimbusCodeEditorStudio.dproj" Targets="Clean"/></Target>
+  <Target Name="NimbusCodeEditorStudio:Make"><MSBuild Projects="NimbusCodeEditorStudio.dproj" Targets="Make"/></Target>
+  <Target Name="NimbusHexEditorWorkspace"><MSBuild Projects="NimbusHexEditorWorkspace.dproj" Targets="Build"/></Target>
+  <Target Name="NimbusHexEditorWorkspace:Clean"><MSBuild Projects="NimbusHexEditorWorkspace.dproj" Targets="Clean"/></Target>
+  <Target Name="NimbusHexEditorWorkspace:Make"><MSBuild Projects="NimbusHexEditorWorkspace.dproj" Targets="Make"/></Target>
+  <Target Name="NimbusGridStudio"><MSBuild Projects="NimbusGridStudio.dproj" Targets="Build"/></Target>
+  <Target Name="NimbusGridStudio:Clean"><MSBuild Projects="NimbusGridStudio.dproj" Targets="Clean"/></Target>
+  <Target Name="NimbusGridStudio:Make"><MSBuild Projects="NimbusGridStudio.dproj" Targets="Make"/></Target>
+  <Target Name="NimbusLogViewer"><MSBuild Projects="NimbusLogViewer.dproj" Targets="Build"/></Target>
+  <Target Name="NimbusLogViewer:Clean"><MSBuild Projects="NimbusLogViewer.dproj" Targets="Clean"/></Target>
+  <Target Name="NimbusLogViewer:Make"><MSBuild Projects="NimbusLogViewer.dproj" Targets="Make"/></Target>
+  <Target Name="NimbusNotifications"><MSBuild Projects="NimbusNotifications.dproj" Targets="Build"/></Target>
+  <Target Name="NimbusNotifications:Clean"><MSBuild Projects="NimbusNotifications.dproj" Targets="Clean"/></Target>
+  <Target Name="NimbusNotifications:Make"><MSBuild Projects="NimbusNotifications.dproj" Targets="Make"/></Target>
+  <Target Name="NimbusPropertyGrid"><MSBuild Projects="NimbusPropertyGrid.dproj" Targets="Build"/></Target>
+  <Target Name="NimbusPropertyGrid:Clean"><MSBuild Projects="NimbusPropertyGrid.dproj" Targets="Clean"/></Target>
+  <Target Name="NimbusPropertyGrid:Make"><MSBuild Projects="NimbusPropertyGrid.dproj" Targets="Make"/></Target>
+  <Target Name="NimbusCharts"><MSBuild Projects="NimbusCharts.dproj" Targets="Build"/></Target>
+  <Target Name="NimbusCharts:Clean"><MSBuild Projects="NimbusCharts.dproj" Targets="Clean"/></Target>
+  <Target Name="NimbusCharts:Make"><MSBuild Projects="NimbusCharts.dproj" Targets="Make"/></Target>
+  <Target Name="Build"><CallTarget Targets="NimbusStandardControls;NimbusCodeEditorBasic;NimbusCodeEditorStudio;NimbusHexEditorWorkspace;NimbusGridStudio;NimbusLogViewer;NimbusNotifications;NimbusPropertyGrid;NimbusCharts"/></Target>
+  <Target Name="Clean"><CallTarget Targets="NimbusStandardControls:Clean;NimbusCodeEditorBasic:Clean;NimbusCodeEditorStudio:Clean;NimbusHexEditorWorkspace:Clean;NimbusGridStudio:Clean;NimbusLogViewer:Clean;NimbusNotifications:Clean;NimbusPropertyGrid:Clean;NimbusCharts:Clean"/></Target>
+  <Target Name="Make"><CallTarget Targets="NimbusStandardControls:Make;NimbusCodeEditorBasic:Make;NimbusCodeEditorStudio:Make;NimbusHexEditorWorkspace:Make;NimbusGridStudio:Make;NimbusLogViewer:Make;NimbusNotifications:Make;NimbusPropertyGrid:Make;NimbusCharts:Make"/></Target>
+  <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

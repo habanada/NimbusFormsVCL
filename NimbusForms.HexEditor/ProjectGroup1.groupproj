@@ -1,0 +1,60 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{C06DD8CE-FBDE-47FB-A5D3-B15E1B19CDF7}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="test\HexEditorTest.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="test\HexRenderTest.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\package\NimbusFormsHexEditor.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="HexEditorTest">
+        <MSBuild Projects="test\HexEditorTest.dproj"/>
+    </Target>
+    <Target Name="HexEditorTest:Clean">
+        <MSBuild Projects="test\HexEditorTest.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="HexEditorTest:Make">
+        <MSBuild Projects="test\HexEditorTest.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="HexRenderTest">
+        <MSBuild Projects="test\HexRenderTest.dproj"/>
+    </Target>
+    <Target Name="HexRenderTest:Clean">
+        <MSBuild Projects="test\HexRenderTest.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="HexRenderTest:Make">
+        <MSBuild Projects="test\HexRenderTest.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="NimbusFormsHexEditor">
+        <MSBuild Projects="..\package\NimbusFormsHexEditor.dproj"/>
+    </Target>
+    <Target Name="NimbusFormsHexEditor:Clean">
+        <MSBuild Projects="..\package\NimbusFormsHexEditor.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="NimbusFormsHexEditor:Make">
+        <MSBuild Projects="..\package\NimbusFormsHexEditor.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="HexEditorTest;HexRenderTest;NimbusFormsHexEditor"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="HexEditorTest:Clean;HexRenderTest:Clean;NimbusFormsHexEditor:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="HexEditorTest:Make;HexRenderTest:Make;NimbusFormsHexEditor:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

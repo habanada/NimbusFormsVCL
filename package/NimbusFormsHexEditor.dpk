@@ -1,0 +1,85 @@
+package NimbusFormsHexEditor;
+
+{$R *.res}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DEFINE DEBUG}
+{$DESCRIPTION 'NimbusForms HexEditor'}
+{$DESIGNONLY}
+{$IMPLICITBUILD ON}
+
+requires
+  rtl,
+  vcl;
+
+contains
+  NimbusForms.Theming.Types in '..\\NimbusForms.Theming\\src\\NimbusForms.Theming.Types.pas',
+  NimbusForms.Theming.Palette in '..\\NimbusForms.Theming\\src\\NimbusForms.Theming.Palette.pas',
+  NimbusForms.Theming.Strings in '..\\NimbusForms.Theming\\src\\NimbusForms.Theming.Strings.pas',
+  NimbusForms.Theming.WinVersion in '..\\NimbusForms.Theming\\src\\NimbusForms.Theming.WinVersion.pas',
+  NimbusForms.Theming.Win32 in '..\\NimbusForms.Theming\\src\\NimbusForms.Theming.Win32.pas',
+  NimbusForms.Theming.PresetFactory in '..\\NimbusForms.Theming\\src\\NimbusForms.Theming.PresetFactory.pas',
+  NimbusForms.Theming.Serializer in '..\\NimbusForms.Theming\\src\\NimbusForms.Theming.Serializer.pas',
+  NimbusForms.Theming.Presets in '..\\NimbusForms.Theming\\src\\NimbusForms.Theming.Presets.pas',
+  NimbusForms.Theming.Manager in '..\\NimbusForms.Theming\\src\\NimbusForms.Theming.Manager.pas',
+  NativePattern.Core in '..\\NativePattern\\src\\NativePattern.Core.pas',
+  NativePattern.BoyerMooreHorspool in '..\\NativePattern\\src\\NativePattern.BoyerMooreHorspool.pas',
+  NativePattern.Bitap in '..\\NativePattern\\src\\NativePattern.Bitap.pas',
+  NativePattern.Sbndm in '..\\NativePattern\\src\\NativePattern.Sbndm.pas',
+  NativePattern.RabinKarp in '..\\NativePattern\\src\\NativePattern.RabinKarp.pas',
+  NativePattern.TwoWay in '..\\NativePattern\\src\\NativePattern.TwoWay.pas',
+  NativePattern.Avx2 in '..\\NativePattern\\src\\NativePattern.Avx2.pas',
+  NativePattern.Levenshtein in '..\\NativePattern\\src\\NativePattern.Levenshtein.pas',
+  NativePattern.Myers in '..\\NativePattern\\src\\NativePattern.Myers.pas',
+  NativePattern.AhoCorasick in '..\\NativePattern\\src\\NativePattern.AhoCorasick.pas',
+  NativePattern.CommentzWalter in '..\\NativePattern\\src\\NativePattern.CommentzWalter.pas',
+  NativePattern in '..\\NativePattern\\src\\NativePattern.pas',
+  NimbusForms.HexEditor.Types in '..\\NimbusForms.HexEditor\\src\\NimbusForms.HexEditor.Types.pas',
+  NimbusForms.HexEditor.Strings in '..\\NimbusForms.HexEditor\\src\\NimbusForms.HexEditor.Strings.pas',
+  NimbusForms.HexEditor.DataSource in '..\\NimbusForms.HexEditor\\src\\NimbusForms.HexEditor.DataSource.pas',
+  NimbusForms.HexEditor.FileDataSource in '..\\NimbusForms.HexEditor\\src\\NimbusForms.HexEditor.FileDataSource.pas',
+  NimbusForms.HexEditor.Pieces in '..\\NimbusForms.HexEditor\\src\\NimbusForms.HexEditor.Pieces.pas',
+  NimbusForms.HexEditor.Document in '..\\NimbusForms.HexEditor\\src\\NimbusForms.HexEditor.Document.pas',
+  NimbusForms.HexEditor.Bookmarks in '..\\NimbusForms.HexEditor\\src\\NimbusForms.HexEditor.Bookmarks.pas',
+  NimbusForms.HexEditor.Search in '..\\NimbusForms.HexEditor\\src\\NimbusForms.HexEditor.Search.pas',
+  NimbusForms.HexEditor.SearchService in '..\\NimbusForms.HexEditor\\src\\NimbusForms.HexEditor.SearchService.pas',
+  NimbusForms.HexEditor.Pattern in '..\\NimbusForms.HexEditor\\src\\NimbusForms.HexEditor.Pattern.pas',
+  NimbusForms.HexEditor.PatternParser in '..\\NimbusForms.HexEditor\\src\\NimbusForms.HexEditor.PatternParser.pas',
+  NimbusForms.HexEditor.PatternSearch in '..\\NimbusForms.HexEditor\\src\\NimbusForms.HexEditor.PatternSearch.pas',
+  NimbusForms.HexEditor.RuleEngine in '..\\NimbusForms.HexEditor\\src\\NimbusForms.HexEditor.RuleEngine.pas',
+  NimbusForms.HexEditor.Export in '..\\NimbusForms.HexEditor\\src\\NimbusForms.HexEditor.Export.pas',
+  NimbusForms.HexEditor.Patch in '..\\NimbusForms.HexEditor\\src\\NimbusForms.HexEditor.Patch.pas',
+  NimbusForms.HexEditor.Inspector in '..\\NimbusForms.HexEditor\\src\\NimbusForms.HexEditor.Inspector.pas',
+  NimbusForms.HexEditor.InspectorControl in '..\\NimbusForms.HexEditor\\src\\NimbusForms.HexEditor.InspectorControl.pas',
+  NimbusForms.HexEditor.Tooltip in '..\\NimbusForms.HexEditor\\src\\NimbusForms.HexEditor.Tooltip.pas',
+  NimbusForms.HexEditor.BookmarkList in '..\\NimbusForms.HexEditor\\src\\NimbusForms.HexEditor.BookmarkList.pas',
+  NimbusForms.HexEditor.Options in '..\\NimbusForms.HexEditor\\src\\NimbusForms.HexEditor.Options.pas',
+  NimbusForms.HexEditor.Theme in '..\\NimbusForms.HexEditor\\src\\NimbusForms.HexEditor.Theme.pas',
+  NimbusForms.HexEditor.RenderSurface in '..\\NimbusForms.HexEditor\\src\\NimbusForms.HexEditor.RenderSurface.pas',
+  NimbusForms.HexEditor.ScrollBar in '..\\NimbusForms.HexEditor\\src\\NimbusForms.HexEditor.ScrollBar.pas',
+  NimbusForms.HexEditor.RenderContext in '..\\NimbusForms.HexEditor\\src\\NimbusForms.HexEditor.RenderContext.pas',
+  NimbusForms.HexEditor.Undo in '..\\NimbusForms.HexEditor\\src\\NimbusForms.HexEditor.Undo.pas',
+  NimbusForms.HexEditor.Renderers in '..\\NimbusForms.HexEditor\\src\\NimbusForms.HexEditor.Renderers.pas',
+  NimbusForms.HexEditor.Control in '..\\NimbusForms.HexEditor\\src\\NimbusForms.HexEditor.Control.pas',
+  NimbusForms.HexEditor.Reg in 'NimbusForms.HexEditor.Reg.pas';
+
+end.

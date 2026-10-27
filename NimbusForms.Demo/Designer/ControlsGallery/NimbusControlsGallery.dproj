@@ -1,0 +1,46 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{EA4111F6-30DF-5ED9-90FD-4590E699761F}</ProjectGuid>
+    <MainSource>NimbusControlsGallery.dpr</MainSource>
+    <ProjectVersion>20.1</ProjectVersion>
+    <ProjectName>NimbusControlsGallery</ProjectName>
+    <AppType>Application</AppType>
+    <FrameworkType>VCL</FrameworkType>
+    <TargetedPlatforms>3</TargetedPlatforms>
+    <Config Condition="'$(Config)'==''">Debug</Config>
+    <Platform Condition="'$(Platform)'==''">Win32</Platform>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Config)'=='Debug'">
+    <DCC_Define>DEBUG;FRAMEWORK_VCL;$(DCC_Define)</DCC_Define>
+    <DCC_DebugInformation>2</DCC_DebugInformation>
+    <DCC_LocalDebugSymbols>true</DCC_LocalDebugSymbols>
+    <DCC_Optimize>false</DCC_Optimize>
+    <BT_BuildType>Debug</BT_BuildType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Config)'=='Release'">
+    <DCC_Define>RELEASE;FRAMEWORK_VCL;$(DCC_Define)</DCC_Define>
+    <DCC_Optimize>true</DCC_Optimize>
+    <DCC_DebugInformation>0</DCC_DebugInformation>
+    <BT_BuildType>Release</BT_BuildType>
+  </PropertyGroup>
+  <PropertyGroup>
+    <DCC_UnitSearchPath>..\..\..\NimbusForms.Controls\src;..\..\..\NimbusForms.Theming\src;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+    <DCC_ExeOutput>..\..\..\bin</DCC_ExeOutput>
+    <DCC_DcuOutput>..\..\..\bin\obj\$(Platform)\$(Config)\NimbusControlsGallery</DCC_DcuOutput>
+    <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Vcl;Vcl.Imaging;Vcl.Touch;System;Xml;Data;Datasnap;Web;Soap;$(DCC_Namespace)</DCC_Namespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <DelphiCompile Include="$(MainSource)"><MainSource>MainSource</MainSource></DelphiCompile>
+    <DCCReference Include="NimbusForms.Demo.ControlsGallery.Main.pas"><Form>ControlsGalleryForm</Form><FormType>dfm</FormType></DCCReference>
+  </ItemGroup>
+  <ProjectExtensions>
+    <Borland.Personality>Delphi.Personality.12</Borland.Personality>
+    <Borland.ProjectType/>
+    <BorlandProject>
+      <Delphi.Personality><Source><Source Name="MainSource">NimbusControlsGallery.dpr</Source></Source></Delphi.Personality>
+      <Platforms><Platform value="Win32">True</Platform><Platform value="Win64">True</Platform></Platforms>
+    </BorlandProject>
+    <ProjectFileVersion>12</ProjectFileVersion>
+  </ProjectExtensions>
+  <Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets"/>
+</Project>

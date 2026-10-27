@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{1FEFEA9C-C2B7-4EEE-B20D-BFCE1186591E}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="GridDemo.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\..\NimbusForms.HexEditor\test\HexEditorTest.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="GridDemo">
+        <MSBuild Projects="GridDemo.dproj"/>
+    </Target>
+    <Target Name="GridDemo:Clean">
+        <MSBuild Projects="GridDemo.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GridDemo:Make">
+        <MSBuild Projects="GridDemo.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="HexEditorTest">
+        <MSBuild Projects="..\..\NimbusForms.HexEditor\test\HexEditorTest.dproj"/>
+    </Target>
+    <Target Name="HexEditorTest:Clean">
+        <MSBuild Projects="..\..\NimbusForms.HexEditor\test\HexEditorTest.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="HexEditorTest:Make">
+        <MSBuild Projects="..\..\NimbusForms.HexEditor\test\HexEditorTest.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="GridDemo;HexEditorTest"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="GridDemo:Clean;HexEditorTest:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="GridDemo:Make;HexEditorTest:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

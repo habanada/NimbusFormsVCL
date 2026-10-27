@@ -1,0 +1,317 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{8DBF6E8A-A397-4B2F-B09F-3CF825D0CA8C}</ProjectGuid>
+    <Config Condition="'$(Config)'==''">Debug</Config>
+    <Platform Condition="'$(Platform)'==''">Win32</Platform>
+    <NimbusOutputRoot>$(MSBuildThisFileDirectory)bin\</NimbusOutputRoot>
+  </PropertyGroup>
+  <ItemGroup>
+    <Projects Include="NimbusForms.Controls\packages\NimbusFormsRuntime.dproj"><Dependencies></Dependencies></Projects>
+    <Projects Include="NimbusForms.Controls\packages\NimbusFormsDesign.dproj"><Dependencies>NimbusForms.Controls\packages\NimbusFormsRuntime.dproj</Dependencies></Projects>
+    <Projects Include="NimbusForms.Demo\Projects\NimbusStandardControls.dproj"><Dependencies></Dependencies></Projects>
+    <Projects Include="NimbusForms.Demo\Projects\NimbusCodeEditorBasic.dproj"><Dependencies></Dependencies></Projects>
+    <Projects Include="NimbusForms.Demo\Projects\NimbusCodeEditorStudio.dproj"><Dependencies></Dependencies></Projects>
+    <Projects Include="NimbusForms.Demo\Projects\NimbusHexEditorWorkspace.dproj"><Dependencies></Dependencies></Projects>
+    <Projects Include="NimbusForms.Demo\Projects\NimbusGridStudio.dproj"><Dependencies></Dependencies></Projects>
+    <Projects Include="NimbusForms.Demo\Projects\NimbusLogViewer.dproj"><Dependencies></Dependencies></Projects>
+    <Projects Include="NimbusForms.Demo\Projects\NimbusNotifications.dproj"><Dependencies></Dependencies></Projects>
+    <Projects Include="NimbusForms.Demo\Projects\NimbusPropertyGrid.dproj"><Dependencies></Dependencies></Projects>
+    <Projects Include="NimbusForms.Demo\Projects\NimbusCharts.dproj"><Dependencies></Dependencies></Projects>
+    <Projects Include="NimbusForms.Demo\NimbusFormsDemo.dproj"><Dependencies></Dependencies></Projects>
+    <Projects Include="NimbusForms.Controls\renderers\skia\NimbusCodeEditorSkia.dproj"><Dependencies></Dependencies></Projects>
+    <Projects Include="NimbusForms.Theming\src\ThemingTest.dproj"><Dependencies></Dependencies></Projects>
+    <Projects Include="NimbusForms.Theming\test\ModernFormTest.dproj"><Dependencies></Dependencies></Projects>
+    <Projects Include="NimbusForms.Grid\test\GridDemo.dproj"><Dependencies></Dependencies></Projects>
+    <Projects Include="test\GridDemo.dproj"><Dependencies></Dependencies></Projects>
+  </ItemGroup>
+  <ItemGroup>
+    <NimbusDemoAvatars Include="$(MSBuildThisFileDirectory)NimbusForms.Demo\avatars\*.jpg"/>
+    <NimbusDemoIcons Include="$(MSBuildThisFileDirectory)NimbusForms.Demo\ico\*.ico"/>
+    <NimbusDemoPalettes Include="$(MSBuildThisFileDirectory)NimbusForms.Demo\Palettes\*.json"/>
+  </ItemGroup>
+  <ProjectExtensions>
+    <Borland.Personality>Default.Personality.12</Borland.Personality>
+    <Borland.ProjectType/>
+    <BorlandProject><Default.Personality/></BorlandProject>
+  </ProjectExtensions>
+  <Target Name="NimbusFormsRuntimeForDesign" Condition="'$(Platform)'!='Win32'">
+    <MakeDir Directories="$(NimbusOutputRoot)Win32\$(Config)\packages;$(NimbusOutputRoot)obj\Win32\$(Config)\NimbusFormsRuntime" Condition="'Build'!='Clean'"/>
+    <MSBuild Projects="NimbusForms.Controls\packages\NimbusFormsRuntime.dproj" Targets="Build" Properties="Config=$(Config);Platform=Win32;DCC_ExeOutput=$(NimbusOutputRoot)Win32\$(Config)\packages;DCC_BplOutput=$(NimbusOutputRoot)Win32\$(Config)\packages;DCC_DcpOutput=$(NimbusOutputRoot)Win32\$(Config)\packages;DCC_DcuOutput=$(NimbusOutputRoot)obj\Win32\$(Config)\NimbusFormsRuntime"/>
+  </Target>
+  <Target Name="NimbusFormsRuntime">
+    <MakeDir Directories="$(NimbusOutputRoot)$(Platform)\$(Config)\packages;$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusFormsRuntime" Condition="'Build'!='Clean'"/>
+    <MSBuild Projects="NimbusForms.Controls\packages\NimbusFormsRuntime.dproj" Targets="Build" Properties="Config=$(Config);Platform=$(Platform);DCC_ExeOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\packages;DCC_BplOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\packages;DCC_DcpOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\packages;DCC_DcuOutput=$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusFormsRuntime"/>
+  </Target>
+  <Target Name="NimbusFormsDesign" DependsOnTargets="NimbusFormsRuntime;NimbusFormsRuntimeForDesign">
+    <MakeDir Directories="$(NimbusOutputRoot)Win32\$(Config)\packages;$(NimbusOutputRoot)obj\Win32\$(Config)\NimbusFormsDesign" Condition="'Build'!='Clean'"/>
+    <MSBuild Projects="NimbusForms.Controls\packages\NimbusFormsDesign.dproj" Targets="Build" Properties="Config=$(Config);Platform=Win32;DCC_ExeOutput=$(NimbusOutputRoot)Win32\$(Config)\packages;DCC_BplOutput=$(NimbusOutputRoot)Win32\$(Config)\packages;DCC_DcpOutput=$(NimbusOutputRoot)Win32\$(Config)\packages;DCC_DcuOutput=$(NimbusOutputRoot)obj\Win32\$(Config)\NimbusFormsDesign;DCC_UnitSearchPath=$(NimbusOutputRoot)Win32\$(Config)\packages"/>
+  </Target>
+  <Target Name="NimbusStandardControls">
+    <MakeDir Directories="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusStandardControls;$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusStandardControls" Condition="'Build'!='Clean'"/>
+    <MSBuild Projects="NimbusForms.Demo\Projects\NimbusStandardControls.dproj" Targets="Build" Properties="Config=$(Config);Platform=$(Platform);DCC_ExeOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusStandardControls;DCC_BplOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusStandardControls;DCC_DcpOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusStandardControls;DCC_DcuOutput=$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusStandardControls"/>
+    <Copy SourceFiles="@(NimbusDemoAvatars)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusStandardControls\avatars" SkipUnchangedFiles="true"/>
+    <Copy SourceFiles="@(NimbusDemoIcons)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusStandardControls\ico" SkipUnchangedFiles="true"/>
+    <Copy SourceFiles="@(NimbusDemoPalettes)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusStandardControls\Palettes" SkipUnchangedFiles="true"/>
+  </Target>
+  <Target Name="NimbusCodeEditorBasic">
+    <MakeDir Directories="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCodeEditorBasic;$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusCodeEditorBasic" Condition="'Build'!='Clean'"/>
+    <MSBuild Projects="NimbusForms.Demo\Projects\NimbusCodeEditorBasic.dproj" Targets="Build" Properties="Config=$(Config);Platform=$(Platform);DCC_ExeOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCodeEditorBasic;DCC_BplOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCodeEditorBasic;DCC_DcpOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCodeEditorBasic;DCC_DcuOutput=$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusCodeEditorBasic"/>
+    <Copy SourceFiles="@(NimbusDemoAvatars)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCodeEditorBasic\avatars" SkipUnchangedFiles="true"/>
+    <Copy SourceFiles="@(NimbusDemoIcons)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCodeEditorBasic\ico" SkipUnchangedFiles="true"/>
+    <Copy SourceFiles="@(NimbusDemoPalettes)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCodeEditorBasic\Palettes" SkipUnchangedFiles="true"/>
+  </Target>
+  <Target Name="NimbusCodeEditorStudio">
+    <MakeDir Directories="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCodeEditorStudio;$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusCodeEditorStudio" Condition="'Build'!='Clean'"/>
+    <MSBuild Projects="NimbusForms.Demo\Projects\NimbusCodeEditorStudio.dproj" Targets="Build" Properties="Config=$(Config);Platform=$(Platform);DCC_ExeOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCodeEditorStudio;DCC_BplOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCodeEditorStudio;DCC_DcpOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCodeEditorStudio;DCC_DcuOutput=$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusCodeEditorStudio"/>
+    <Copy SourceFiles="@(NimbusDemoAvatars)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCodeEditorStudio\avatars" SkipUnchangedFiles="true"/>
+    <Copy SourceFiles="@(NimbusDemoIcons)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCodeEditorStudio\ico" SkipUnchangedFiles="true"/>
+    <Copy SourceFiles="@(NimbusDemoPalettes)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCodeEditorStudio\Palettes" SkipUnchangedFiles="true"/>
+  </Target>
+  <Target Name="NimbusHexEditorWorkspace">
+    <MakeDir Directories="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusHexEditorWorkspace;$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusHexEditorWorkspace" Condition="'Build'!='Clean'"/>
+    <MSBuild Projects="NimbusForms.Demo\Projects\NimbusHexEditorWorkspace.dproj" Targets="Build" Properties="Config=$(Config);Platform=$(Platform);DCC_ExeOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusHexEditorWorkspace;DCC_BplOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusHexEditorWorkspace;DCC_DcpOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusHexEditorWorkspace;DCC_DcuOutput=$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusHexEditorWorkspace"/>
+    <Copy SourceFiles="@(NimbusDemoAvatars)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusHexEditorWorkspace\avatars" SkipUnchangedFiles="true"/>
+    <Copy SourceFiles="@(NimbusDemoIcons)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusHexEditorWorkspace\ico" SkipUnchangedFiles="true"/>
+    <Copy SourceFiles="@(NimbusDemoPalettes)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusHexEditorWorkspace\Palettes" SkipUnchangedFiles="true"/>
+  </Target>
+  <Target Name="NimbusGridStudio">
+    <MakeDir Directories="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusGridStudio;$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusGridStudio" Condition="'Build'!='Clean'"/>
+    <MSBuild Projects="NimbusForms.Demo\Projects\NimbusGridStudio.dproj" Targets="Build" Properties="Config=$(Config);Platform=$(Platform);DCC_ExeOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusGridStudio;DCC_BplOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusGridStudio;DCC_DcpOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusGridStudio;DCC_DcuOutput=$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusGridStudio"/>
+    <Copy SourceFiles="@(NimbusDemoAvatars)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusGridStudio\avatars" SkipUnchangedFiles="true"/>
+    <Copy SourceFiles="@(NimbusDemoIcons)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusGridStudio\ico" SkipUnchangedFiles="true"/>
+    <Copy SourceFiles="@(NimbusDemoPalettes)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusGridStudio\Palettes" SkipUnchangedFiles="true"/>
+  </Target>
+  <Target Name="NimbusLogViewer">
+    <MakeDir Directories="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusLogViewer;$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusLogViewer" Condition="'Build'!='Clean'"/>
+    <MSBuild Projects="NimbusForms.Demo\Projects\NimbusLogViewer.dproj" Targets="Build" Properties="Config=$(Config);Platform=$(Platform);DCC_ExeOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusLogViewer;DCC_BplOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusLogViewer;DCC_DcpOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusLogViewer;DCC_DcuOutput=$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusLogViewer"/>
+    <Copy SourceFiles="@(NimbusDemoAvatars)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusLogViewer\avatars" SkipUnchangedFiles="true"/>
+    <Copy SourceFiles="@(NimbusDemoIcons)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusLogViewer\ico" SkipUnchangedFiles="true"/>
+    <Copy SourceFiles="@(NimbusDemoPalettes)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusLogViewer\Palettes" SkipUnchangedFiles="true"/>
+  </Target>
+  <Target Name="NimbusNotifications">
+    <MakeDir Directories="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusNotifications;$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusNotifications" Condition="'Build'!='Clean'"/>
+    <MSBuild Projects="NimbusForms.Demo\Projects\NimbusNotifications.dproj" Targets="Build" Properties="Config=$(Config);Platform=$(Platform);DCC_ExeOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusNotifications;DCC_BplOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusNotifications;DCC_DcpOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusNotifications;DCC_DcuOutput=$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusNotifications"/>
+    <Copy SourceFiles="@(NimbusDemoAvatars)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusNotifications\avatars" SkipUnchangedFiles="true"/>
+    <Copy SourceFiles="@(NimbusDemoIcons)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusNotifications\ico" SkipUnchangedFiles="true"/>
+    <Copy SourceFiles="@(NimbusDemoPalettes)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusNotifications\Palettes" SkipUnchangedFiles="true"/>
+  </Target>
+  <Target Name="NimbusPropertyGrid">
+    <MakeDir Directories="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusPropertyGrid;$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusPropertyGrid" Condition="'Build'!='Clean'"/>
+    <MSBuild Projects="NimbusForms.Demo\Projects\NimbusPropertyGrid.dproj" Targets="Build" Properties="Config=$(Config);Platform=$(Platform);DCC_ExeOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusPropertyGrid;DCC_BplOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusPropertyGrid;DCC_DcpOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusPropertyGrid;DCC_DcuOutput=$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusPropertyGrid"/>
+    <Copy SourceFiles="@(NimbusDemoAvatars)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusPropertyGrid\avatars" SkipUnchangedFiles="true"/>
+    <Copy SourceFiles="@(NimbusDemoIcons)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusPropertyGrid\ico" SkipUnchangedFiles="true"/>
+    <Copy SourceFiles="@(NimbusDemoPalettes)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusPropertyGrid\Palettes" SkipUnchangedFiles="true"/>
+  </Target>
+  <Target Name="NimbusCharts">
+    <MakeDir Directories="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCharts;$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusCharts" Condition="'Build'!='Clean'"/>
+    <MSBuild Projects="NimbusForms.Demo\Projects\NimbusCharts.dproj" Targets="Build" Properties="Config=$(Config);Platform=$(Platform);DCC_ExeOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCharts;DCC_BplOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCharts;DCC_DcpOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCharts;DCC_DcuOutput=$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusCharts"/>
+    <Copy SourceFiles="@(NimbusDemoAvatars)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCharts\avatars" SkipUnchangedFiles="true"/>
+    <Copy SourceFiles="@(NimbusDemoIcons)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCharts\ico" SkipUnchangedFiles="true"/>
+    <Copy SourceFiles="@(NimbusDemoPalettes)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCharts\Palettes" SkipUnchangedFiles="true"/>
+  </Target>
+  <Target Name="NimbusFormsDemo">
+    <MakeDir Directories="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusFormsDemo;$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusFormsDemo" Condition="'Build'!='Clean'"/>
+    <MSBuild Projects="NimbusForms.Demo\NimbusFormsDemo.dproj" Targets="Build" Properties="Config=$(Config);Platform=$(Platform);DCC_ExeOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusFormsDemo;DCC_BplOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusFormsDemo;DCC_DcpOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusFormsDemo;DCC_DcuOutput=$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusFormsDemo"/>
+    <Copy SourceFiles="@(NimbusDemoAvatars)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusFormsDemo\avatars" SkipUnchangedFiles="true"/>
+    <Copy SourceFiles="@(NimbusDemoIcons)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusFormsDemo\ico" SkipUnchangedFiles="true"/>
+    <Copy SourceFiles="@(NimbusDemoPalettes)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusFormsDemo\Palettes" SkipUnchangedFiles="true"/>
+  </Target>
+  <Target Name="NimbusCodeEditorSkia">
+    <MakeDir Directories="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCodeEditorSkia;$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusCodeEditorSkia" Condition="'Build'!='Clean'"/>
+    <MSBuild Projects="NimbusForms.Controls\renderers\skia\NimbusCodeEditorSkia.dproj" Targets="Build" Properties="Config=$(Config);Platform=$(Platform);DCC_ExeOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCodeEditorSkia;DCC_BplOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCodeEditorSkia;DCC_DcpOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCodeEditorSkia;DCC_DcuOutput=$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusCodeEditorSkia"/>
+  </Target>
+  <Target Name="ThemingTest">
+    <MakeDir Directories="$(NimbusOutputRoot)$(Platform)\$(Config)\ThemingTest;$(NimbusOutputRoot)obj\$(Platform)\$(Config)\ThemingTest" Condition="'Build'!='Clean'"/>
+    <MSBuild Projects="NimbusForms.Theming\src\ThemingTest.dproj" Targets="Build" Properties="Config=$(Config);Platform=$(Platform);DCC_ExeOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\ThemingTest;DCC_BplOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\ThemingTest;DCC_DcpOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\ThemingTest;DCC_DcuOutput=$(NimbusOutputRoot)obj\$(Platform)\$(Config)\ThemingTest"/>
+  </Target>
+  <Target Name="ModernFormTest">
+    <MakeDir Directories="$(NimbusOutputRoot)$(Platform)\$(Config)\ModernFormTest;$(NimbusOutputRoot)obj\$(Platform)\$(Config)\ModernFormTest" Condition="'Build'!='Clean'"/>
+    <MSBuild Projects="NimbusForms.Theming\test\ModernFormTest.dproj" Targets="Build" Properties="Config=$(Config);Platform=$(Platform);DCC_ExeOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\ModernFormTest;DCC_BplOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\ModernFormTest;DCC_DcpOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\ModernFormTest;DCC_DcuOutput=$(NimbusOutputRoot)obj\$(Platform)\$(Config)\ModernFormTest"/>
+  </Target>
+  <Target Name="GridDemo">
+    <MakeDir Directories="$(NimbusOutputRoot)$(Platform)\$(Config)\GridDemo;$(NimbusOutputRoot)obj\$(Platform)\$(Config)\GridDemo" Condition="'Build'!='Clean'"/>
+    <MSBuild Projects="NimbusForms.Grid\test\GridDemo.dproj" Targets="Build" Properties="Config=$(Config);Platform=$(Platform);DCC_ExeOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\GridDemo;DCC_BplOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\GridDemo;DCC_DcpOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\GridDemo;DCC_DcuOutput=$(NimbusOutputRoot)obj\$(Platform)\$(Config)\GridDemo"/>
+  </Target>
+  <Target Name="LegacyGridDemo">
+    <MakeDir Directories="$(NimbusOutputRoot)$(Platform)\$(Config)\LegacyGridDemo;$(NimbusOutputRoot)obj\$(Platform)\$(Config)\LegacyGridDemo" Condition="'Build'!='Clean'"/>
+    <MSBuild Projects="test\GridDemo.dproj" Targets="Build" Properties="Config=$(Config);Platform=$(Platform);DCC_ExeOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\LegacyGridDemo;DCC_BplOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\LegacyGridDemo;DCC_DcpOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\LegacyGridDemo;DCC_DcuOutput=$(NimbusOutputRoot)obj\$(Platform)\$(Config)\LegacyGridDemo"/>
+  </Target>
+  <Target Name="Build"><CallTarget Targets="NimbusFormsRuntime;NimbusFormsDesign;NimbusStandardControls;NimbusCodeEditorBasic;NimbusCodeEditorStudio;NimbusHexEditorWorkspace;NimbusGridStudio;NimbusLogViewer;NimbusNotifications;NimbusPropertyGrid;NimbusCharts;NimbusFormsDemo;NimbusCodeEditorSkia;ThemingTest;ModernFormTest;GridDemo;LegacyGridDemo"/></Target>
+  <Target Name="NimbusFormsRuntimeForDesign:Clean" Condition="'$(Platform)'!='Win32'">
+    <MakeDir Directories="$(NimbusOutputRoot)Win32\$(Config)\packages;$(NimbusOutputRoot)obj\Win32\$(Config)\NimbusFormsRuntime" Condition="'Clean'!='Clean'"/>
+    <MSBuild Projects="NimbusForms.Controls\packages\NimbusFormsRuntime.dproj" Targets="Clean" Properties="Config=$(Config);Platform=Win32;DCC_ExeOutput=$(NimbusOutputRoot)Win32\$(Config)\packages;DCC_BplOutput=$(NimbusOutputRoot)Win32\$(Config)\packages;DCC_DcpOutput=$(NimbusOutputRoot)Win32\$(Config)\packages;DCC_DcuOutput=$(NimbusOutputRoot)obj\Win32\$(Config)\NimbusFormsRuntime"/>
+  </Target>
+  <Target Name="NimbusFormsRuntime:Clean">
+    <MakeDir Directories="$(NimbusOutputRoot)$(Platform)\$(Config)\packages;$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusFormsRuntime" Condition="'Clean'!='Clean'"/>
+    <MSBuild Projects="NimbusForms.Controls\packages\NimbusFormsRuntime.dproj" Targets="Clean" Properties="Config=$(Config);Platform=$(Platform);DCC_ExeOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\packages;DCC_BplOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\packages;DCC_DcpOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\packages;DCC_DcuOutput=$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusFormsRuntime"/>
+  </Target>
+  <Target Name="NimbusFormsDesign:Clean" DependsOnTargets="NimbusFormsRuntime:Clean;NimbusFormsRuntimeForDesign:Clean">
+    <MakeDir Directories="$(NimbusOutputRoot)Win32\$(Config)\packages;$(NimbusOutputRoot)obj\Win32\$(Config)\NimbusFormsDesign" Condition="'Clean'!='Clean'"/>
+    <MSBuild Projects="NimbusForms.Controls\packages\NimbusFormsDesign.dproj" Targets="Clean" Properties="Config=$(Config);Platform=Win32;DCC_ExeOutput=$(NimbusOutputRoot)Win32\$(Config)\packages;DCC_BplOutput=$(NimbusOutputRoot)Win32\$(Config)\packages;DCC_DcpOutput=$(NimbusOutputRoot)Win32\$(Config)\packages;DCC_DcuOutput=$(NimbusOutputRoot)obj\Win32\$(Config)\NimbusFormsDesign;DCC_UnitSearchPath=$(NimbusOutputRoot)Win32\$(Config)\packages"/>
+  </Target>
+  <Target Name="NimbusStandardControls:Clean">
+    <MakeDir Directories="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusStandardControls;$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusStandardControls" Condition="'Clean'!='Clean'"/>
+    <MSBuild Projects="NimbusForms.Demo\Projects\NimbusStandardControls.dproj" Targets="Clean" Properties="Config=$(Config);Platform=$(Platform);DCC_ExeOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusStandardControls;DCC_BplOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusStandardControls;DCC_DcpOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusStandardControls;DCC_DcuOutput=$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusStandardControls"/>
+  </Target>
+  <Target Name="NimbusCodeEditorBasic:Clean">
+    <MakeDir Directories="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCodeEditorBasic;$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusCodeEditorBasic" Condition="'Clean'!='Clean'"/>
+    <MSBuild Projects="NimbusForms.Demo\Projects\NimbusCodeEditorBasic.dproj" Targets="Clean" Properties="Config=$(Config);Platform=$(Platform);DCC_ExeOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCodeEditorBasic;DCC_BplOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCodeEditorBasic;DCC_DcpOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCodeEditorBasic;DCC_DcuOutput=$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusCodeEditorBasic"/>
+  </Target>
+  <Target Name="NimbusCodeEditorStudio:Clean">
+    <MakeDir Directories="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCodeEditorStudio;$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusCodeEditorStudio" Condition="'Clean'!='Clean'"/>
+    <MSBuild Projects="NimbusForms.Demo\Projects\NimbusCodeEditorStudio.dproj" Targets="Clean" Properties="Config=$(Config);Platform=$(Platform);DCC_ExeOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCodeEditorStudio;DCC_BplOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCodeEditorStudio;DCC_DcpOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCodeEditorStudio;DCC_DcuOutput=$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusCodeEditorStudio"/>
+  </Target>
+  <Target Name="NimbusHexEditorWorkspace:Clean">
+    <MakeDir Directories="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusHexEditorWorkspace;$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusHexEditorWorkspace" Condition="'Clean'!='Clean'"/>
+    <MSBuild Projects="NimbusForms.Demo\Projects\NimbusHexEditorWorkspace.dproj" Targets="Clean" Properties="Config=$(Config);Platform=$(Platform);DCC_ExeOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusHexEditorWorkspace;DCC_BplOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusHexEditorWorkspace;DCC_DcpOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusHexEditorWorkspace;DCC_DcuOutput=$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusHexEditorWorkspace"/>
+  </Target>
+  <Target Name="NimbusGridStudio:Clean">
+    <MakeDir Directories="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusGridStudio;$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusGridStudio" Condition="'Clean'!='Clean'"/>
+    <MSBuild Projects="NimbusForms.Demo\Projects\NimbusGridStudio.dproj" Targets="Clean" Properties="Config=$(Config);Platform=$(Platform);DCC_ExeOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusGridStudio;DCC_BplOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusGridStudio;DCC_DcpOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusGridStudio;DCC_DcuOutput=$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusGridStudio"/>
+  </Target>
+  <Target Name="NimbusLogViewer:Clean">
+    <MakeDir Directories="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusLogViewer;$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusLogViewer" Condition="'Clean'!='Clean'"/>
+    <MSBuild Projects="NimbusForms.Demo\Projects\NimbusLogViewer.dproj" Targets="Clean" Properties="Config=$(Config);Platform=$(Platform);DCC_ExeOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusLogViewer;DCC_BplOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusLogViewer;DCC_DcpOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusLogViewer;DCC_DcuOutput=$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusLogViewer"/>
+  </Target>
+  <Target Name="NimbusNotifications:Clean">
+    <MakeDir Directories="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusNotifications;$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusNotifications" Condition="'Clean'!='Clean'"/>
+    <MSBuild Projects="NimbusForms.Demo\Projects\NimbusNotifications.dproj" Targets="Clean" Properties="Config=$(Config);Platform=$(Platform);DCC_ExeOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusNotifications;DCC_BplOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusNotifications;DCC_DcpOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusNotifications;DCC_DcuOutput=$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusNotifications"/>
+  </Target>
+  <Target Name="NimbusPropertyGrid:Clean">
+    <MakeDir Directories="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusPropertyGrid;$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusPropertyGrid" Condition="'Clean'!='Clean'"/>
+    <MSBuild Projects="NimbusForms.Demo\Projects\NimbusPropertyGrid.dproj" Targets="Clean" Properties="Config=$(Config);Platform=$(Platform);DCC_ExeOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusPropertyGrid;DCC_BplOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusPropertyGrid;DCC_DcpOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusPropertyGrid;DCC_DcuOutput=$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusPropertyGrid"/>
+  </Target>
+  <Target Name="NimbusCharts:Clean">
+    <MakeDir Directories="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCharts;$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusCharts" Condition="'Clean'!='Clean'"/>
+    <MSBuild Projects="NimbusForms.Demo\Projects\NimbusCharts.dproj" Targets="Clean" Properties="Config=$(Config);Platform=$(Platform);DCC_ExeOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCharts;DCC_BplOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCharts;DCC_DcpOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCharts;DCC_DcuOutput=$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusCharts"/>
+  </Target>
+  <Target Name="NimbusFormsDemo:Clean">
+    <MakeDir Directories="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusFormsDemo;$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusFormsDemo" Condition="'Clean'!='Clean'"/>
+    <MSBuild Projects="NimbusForms.Demo\NimbusFormsDemo.dproj" Targets="Clean" Properties="Config=$(Config);Platform=$(Platform);DCC_ExeOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusFormsDemo;DCC_BplOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusFormsDemo;DCC_DcpOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusFormsDemo;DCC_DcuOutput=$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusFormsDemo"/>
+  </Target>
+  <Target Name="NimbusCodeEditorSkia:Clean">
+    <MakeDir Directories="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCodeEditorSkia;$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusCodeEditorSkia" Condition="'Clean'!='Clean'"/>
+    <MSBuild Projects="NimbusForms.Controls\renderers\skia\NimbusCodeEditorSkia.dproj" Targets="Clean" Properties="Config=$(Config);Platform=$(Platform);DCC_ExeOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCodeEditorSkia;DCC_BplOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCodeEditorSkia;DCC_DcpOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCodeEditorSkia;DCC_DcuOutput=$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusCodeEditorSkia"/>
+  </Target>
+  <Target Name="ThemingTest:Clean">
+    <MakeDir Directories="$(NimbusOutputRoot)$(Platform)\$(Config)\ThemingTest;$(NimbusOutputRoot)obj\$(Platform)\$(Config)\ThemingTest" Condition="'Clean'!='Clean'"/>
+    <MSBuild Projects="NimbusForms.Theming\src\ThemingTest.dproj" Targets="Clean" Properties="Config=$(Config);Platform=$(Platform);DCC_ExeOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\ThemingTest;DCC_BplOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\ThemingTest;DCC_DcpOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\ThemingTest;DCC_DcuOutput=$(NimbusOutputRoot)obj\$(Platform)\$(Config)\ThemingTest"/>
+  </Target>
+  <Target Name="ModernFormTest:Clean">
+    <MakeDir Directories="$(NimbusOutputRoot)$(Platform)\$(Config)\ModernFormTest;$(NimbusOutputRoot)obj\$(Platform)\$(Config)\ModernFormTest" Condition="'Clean'!='Clean'"/>
+    <MSBuild Projects="NimbusForms.Theming\test\ModernFormTest.dproj" Targets="Clean" Properties="Config=$(Config);Platform=$(Platform);DCC_ExeOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\ModernFormTest;DCC_BplOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\ModernFormTest;DCC_DcpOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\ModernFormTest;DCC_DcuOutput=$(NimbusOutputRoot)obj\$(Platform)\$(Config)\ModernFormTest"/>
+  </Target>
+  <Target Name="GridDemo:Clean">
+    <MakeDir Directories="$(NimbusOutputRoot)$(Platform)\$(Config)\GridDemo;$(NimbusOutputRoot)obj\$(Platform)\$(Config)\GridDemo" Condition="'Clean'!='Clean'"/>
+    <MSBuild Projects="NimbusForms.Grid\test\GridDemo.dproj" Targets="Clean" Properties="Config=$(Config);Platform=$(Platform);DCC_ExeOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\GridDemo;DCC_BplOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\GridDemo;DCC_DcpOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\GridDemo;DCC_DcuOutput=$(NimbusOutputRoot)obj\$(Platform)\$(Config)\GridDemo"/>
+  </Target>
+  <Target Name="LegacyGridDemo:Clean">
+    <MakeDir Directories="$(NimbusOutputRoot)$(Platform)\$(Config)\LegacyGridDemo;$(NimbusOutputRoot)obj\$(Platform)\$(Config)\LegacyGridDemo" Condition="'Clean'!='Clean'"/>
+    <MSBuild Projects="test\GridDemo.dproj" Targets="Clean" Properties="Config=$(Config);Platform=$(Platform);DCC_ExeOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\LegacyGridDemo;DCC_BplOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\LegacyGridDemo;DCC_DcpOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\LegacyGridDemo;DCC_DcuOutput=$(NimbusOutputRoot)obj\$(Platform)\$(Config)\LegacyGridDemo"/>
+  </Target>
+  <Target Name="Clean"><CallTarget Targets="LegacyGridDemo:Clean;GridDemo:Clean;ModernFormTest:Clean;ThemingTest:Clean;NimbusCodeEditorSkia:Clean;NimbusFormsDemo:Clean;NimbusCharts:Clean;NimbusPropertyGrid:Clean;NimbusNotifications:Clean;NimbusLogViewer:Clean;NimbusGridStudio:Clean;NimbusHexEditorWorkspace:Clean;NimbusCodeEditorStudio:Clean;NimbusCodeEditorBasic:Clean;NimbusStandardControls:Clean;NimbusFormsDesign:Clean;NimbusFormsRuntime:Clean"/></Target>
+  <Target Name="NimbusFormsRuntimeForDesign:Make" Condition="'$(Platform)'!='Win32'">
+    <MakeDir Directories="$(NimbusOutputRoot)Win32\$(Config)\packages;$(NimbusOutputRoot)obj\Win32\$(Config)\NimbusFormsRuntime" Condition="'Make'!='Clean'"/>
+    <MSBuild Projects="NimbusForms.Controls\packages\NimbusFormsRuntime.dproj" Targets="Make" Properties="Config=$(Config);Platform=Win32;DCC_ExeOutput=$(NimbusOutputRoot)Win32\$(Config)\packages;DCC_BplOutput=$(NimbusOutputRoot)Win32\$(Config)\packages;DCC_DcpOutput=$(NimbusOutputRoot)Win32\$(Config)\packages;DCC_DcuOutput=$(NimbusOutputRoot)obj\Win32\$(Config)\NimbusFormsRuntime"/>
+  </Target>
+  <Target Name="NimbusFormsRuntime:Make">
+    <MakeDir Directories="$(NimbusOutputRoot)$(Platform)\$(Config)\packages;$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusFormsRuntime" Condition="'Make'!='Clean'"/>
+    <MSBuild Projects="NimbusForms.Controls\packages\NimbusFormsRuntime.dproj" Targets="Make" Properties="Config=$(Config);Platform=$(Platform);DCC_ExeOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\packages;DCC_BplOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\packages;DCC_DcpOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\packages;DCC_DcuOutput=$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusFormsRuntime"/>
+  </Target>
+  <Target Name="NimbusFormsDesign:Make" DependsOnTargets="NimbusFormsRuntime:Make;NimbusFormsRuntimeForDesign:Make">
+    <MakeDir Directories="$(NimbusOutputRoot)Win32\$(Config)\packages;$(NimbusOutputRoot)obj\Win32\$(Config)\NimbusFormsDesign" Condition="'Make'!='Clean'"/>
+    <MSBuild Projects="NimbusForms.Controls\packages\NimbusFormsDesign.dproj" Targets="Make" Properties="Config=$(Config);Platform=Win32;DCC_ExeOutput=$(NimbusOutputRoot)Win32\$(Config)\packages;DCC_BplOutput=$(NimbusOutputRoot)Win32\$(Config)\packages;DCC_DcpOutput=$(NimbusOutputRoot)Win32\$(Config)\packages;DCC_DcuOutput=$(NimbusOutputRoot)obj\Win32\$(Config)\NimbusFormsDesign;DCC_UnitSearchPath=$(NimbusOutputRoot)Win32\$(Config)\packages"/>
+  </Target>
+  <Target Name="NimbusStandardControls:Make">
+    <MakeDir Directories="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusStandardControls;$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusStandardControls" Condition="'Make'!='Clean'"/>
+    <MSBuild Projects="NimbusForms.Demo\Projects\NimbusStandardControls.dproj" Targets="Make" Properties="Config=$(Config);Platform=$(Platform);DCC_ExeOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusStandardControls;DCC_BplOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusStandardControls;DCC_DcpOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusStandardControls;DCC_DcuOutput=$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusStandardControls"/>
+    <Copy SourceFiles="@(NimbusDemoAvatars)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusStandardControls\avatars" SkipUnchangedFiles="true"/>
+    <Copy SourceFiles="@(NimbusDemoIcons)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusStandardControls\ico" SkipUnchangedFiles="true"/>
+    <Copy SourceFiles="@(NimbusDemoPalettes)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusStandardControls\Palettes" SkipUnchangedFiles="true"/>
+  </Target>
+  <Target Name="NimbusCodeEditorBasic:Make">
+    <MakeDir Directories="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCodeEditorBasic;$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusCodeEditorBasic" Condition="'Make'!='Clean'"/>
+    <MSBuild Projects="NimbusForms.Demo\Projects\NimbusCodeEditorBasic.dproj" Targets="Make" Properties="Config=$(Config);Platform=$(Platform);DCC_ExeOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCodeEditorBasic;DCC_BplOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCodeEditorBasic;DCC_DcpOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCodeEditorBasic;DCC_DcuOutput=$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusCodeEditorBasic"/>
+    <Copy SourceFiles="@(NimbusDemoAvatars)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCodeEditorBasic\avatars" SkipUnchangedFiles="true"/>
+    <Copy SourceFiles="@(NimbusDemoIcons)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCodeEditorBasic\ico" SkipUnchangedFiles="true"/>
+    <Copy SourceFiles="@(NimbusDemoPalettes)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCodeEditorBasic\Palettes" SkipUnchangedFiles="true"/>
+  </Target>
+  <Target Name="NimbusCodeEditorStudio:Make">
+    <MakeDir Directories="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCodeEditorStudio;$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusCodeEditorStudio" Condition="'Make'!='Clean'"/>
+    <MSBuild Projects="NimbusForms.Demo\Projects\NimbusCodeEditorStudio.dproj" Targets="Make" Properties="Config=$(Config);Platform=$(Platform);DCC_ExeOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCodeEditorStudio;DCC_BplOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCodeEditorStudio;DCC_DcpOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCodeEditorStudio;DCC_DcuOutput=$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusCodeEditorStudio"/>
+    <Copy SourceFiles="@(NimbusDemoAvatars)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCodeEditorStudio\avatars" SkipUnchangedFiles="true"/>
+    <Copy SourceFiles="@(NimbusDemoIcons)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCodeEditorStudio\ico" SkipUnchangedFiles="true"/>
+    <Copy SourceFiles="@(NimbusDemoPalettes)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCodeEditorStudio\Palettes" SkipUnchangedFiles="true"/>
+  </Target>
+  <Target Name="NimbusHexEditorWorkspace:Make">
+    <MakeDir Directories="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusHexEditorWorkspace;$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusHexEditorWorkspace" Condition="'Make'!='Clean'"/>
+    <MSBuild Projects="NimbusForms.Demo\Projects\NimbusHexEditorWorkspace.dproj" Targets="Make" Properties="Config=$(Config);Platform=$(Platform);DCC_ExeOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusHexEditorWorkspace;DCC_BplOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusHexEditorWorkspace;DCC_DcpOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusHexEditorWorkspace;DCC_DcuOutput=$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusHexEditorWorkspace"/>
+    <Copy SourceFiles="@(NimbusDemoAvatars)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusHexEditorWorkspace\avatars" SkipUnchangedFiles="true"/>
+    <Copy SourceFiles="@(NimbusDemoIcons)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusHexEditorWorkspace\ico" SkipUnchangedFiles="true"/>
+    <Copy SourceFiles="@(NimbusDemoPalettes)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusHexEditorWorkspace\Palettes" SkipUnchangedFiles="true"/>
+  </Target>
+  <Target Name="NimbusGridStudio:Make">
+    <MakeDir Directories="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusGridStudio;$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusGridStudio" Condition="'Make'!='Clean'"/>
+    <MSBuild Projects="NimbusForms.Demo\Projects\NimbusGridStudio.dproj" Targets="Make" Properties="Config=$(Config);Platform=$(Platform);DCC_ExeOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusGridStudio;DCC_BplOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusGridStudio;DCC_DcpOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusGridStudio;DCC_DcuOutput=$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusGridStudio"/>
+    <Copy SourceFiles="@(NimbusDemoAvatars)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusGridStudio\avatars" SkipUnchangedFiles="true"/>
+    <Copy SourceFiles="@(NimbusDemoIcons)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusGridStudio\ico" SkipUnchangedFiles="true"/>
+    <Copy SourceFiles="@(NimbusDemoPalettes)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusGridStudio\Palettes" SkipUnchangedFiles="true"/>
+  </Target>
+  <Target Name="NimbusLogViewer:Make">
+    <MakeDir Directories="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusLogViewer;$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusLogViewer" Condition="'Make'!='Clean'"/>
+    <MSBuild Projects="NimbusForms.Demo\Projects\NimbusLogViewer.dproj" Targets="Make" Properties="Config=$(Config);Platform=$(Platform);DCC_ExeOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusLogViewer;DCC_BplOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusLogViewer;DCC_DcpOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusLogViewer;DCC_DcuOutput=$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusLogViewer"/>
+    <Copy SourceFiles="@(NimbusDemoAvatars)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusLogViewer\avatars" SkipUnchangedFiles="true"/>
+    <Copy SourceFiles="@(NimbusDemoIcons)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusLogViewer\ico" SkipUnchangedFiles="true"/>
+    <Copy SourceFiles="@(NimbusDemoPalettes)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusLogViewer\Palettes" SkipUnchangedFiles="true"/>
+  </Target>
+  <Target Name="NimbusNotifications:Make">
+    <MakeDir Directories="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusNotifications;$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusNotifications" Condition="'Make'!='Clean'"/>
+    <MSBuild Projects="NimbusForms.Demo\Projects\NimbusNotifications.dproj" Targets="Make" Properties="Config=$(Config);Platform=$(Platform);DCC_ExeOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusNotifications;DCC_BplOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusNotifications;DCC_DcpOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusNotifications;DCC_DcuOutput=$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusNotifications"/>
+    <Copy SourceFiles="@(NimbusDemoAvatars)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusNotifications\avatars" SkipUnchangedFiles="true"/>
+    <Copy SourceFiles="@(NimbusDemoIcons)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusNotifications\ico" SkipUnchangedFiles="true"/>
+    <Copy SourceFiles="@(NimbusDemoPalettes)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusNotifications\Palettes" SkipUnchangedFiles="true"/>
+  </Target>
+  <Target Name="NimbusPropertyGrid:Make">
+    <MakeDir Directories="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusPropertyGrid;$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusPropertyGrid" Condition="'Make'!='Clean'"/>
+    <MSBuild Projects="NimbusForms.Demo\Projects\NimbusPropertyGrid.dproj" Targets="Make" Properties="Config=$(Config);Platform=$(Platform);DCC_ExeOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusPropertyGrid;DCC_BplOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusPropertyGrid;DCC_DcpOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusPropertyGrid;DCC_DcuOutput=$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusPropertyGrid"/>
+    <Copy SourceFiles="@(NimbusDemoAvatars)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusPropertyGrid\avatars" SkipUnchangedFiles="true"/>
+    <Copy SourceFiles="@(NimbusDemoIcons)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusPropertyGrid\ico" SkipUnchangedFiles="true"/>
+    <Copy SourceFiles="@(NimbusDemoPalettes)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusPropertyGrid\Palettes" SkipUnchangedFiles="true"/>
+  </Target>
+  <Target Name="NimbusCharts:Make">
+    <MakeDir Directories="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCharts;$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusCharts" Condition="'Make'!='Clean'"/>
+    <MSBuild Projects="NimbusForms.Demo\Projects\NimbusCharts.dproj" Targets="Make" Properties="Config=$(Config);Platform=$(Platform);DCC_ExeOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCharts;DCC_BplOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCharts;DCC_DcpOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCharts;DCC_DcuOutput=$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusCharts"/>
+    <Copy SourceFiles="@(NimbusDemoAvatars)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCharts\avatars" SkipUnchangedFiles="true"/>
+    <Copy SourceFiles="@(NimbusDemoIcons)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCharts\ico" SkipUnchangedFiles="true"/>
+    <Copy SourceFiles="@(NimbusDemoPalettes)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCharts\Palettes" SkipUnchangedFiles="true"/>
+  </Target>
+  <Target Name="NimbusFormsDemo:Make">
+    <MakeDir Directories="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusFormsDemo;$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusFormsDemo" Condition="'Make'!='Clean'"/>
+    <MSBuild Projects="NimbusForms.Demo\NimbusFormsDemo.dproj" Targets="Make" Properties="Config=$(Config);Platform=$(Platform);DCC_ExeOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusFormsDemo;DCC_BplOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusFormsDemo;DCC_DcpOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusFormsDemo;DCC_DcuOutput=$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusFormsDemo"/>
+    <Copy SourceFiles="@(NimbusDemoAvatars)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusFormsDemo\avatars" SkipUnchangedFiles="true"/>
+    <Copy SourceFiles="@(NimbusDemoIcons)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusFormsDemo\ico" SkipUnchangedFiles="true"/>
+    <Copy SourceFiles="@(NimbusDemoPalettes)" DestinationFolder="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusFormsDemo\Palettes" SkipUnchangedFiles="true"/>
+  </Target>
+  <Target Name="NimbusCodeEditorSkia:Make">
+    <MakeDir Directories="$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCodeEditorSkia;$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusCodeEditorSkia" Condition="'Make'!='Clean'"/>
+    <MSBuild Projects="NimbusForms.Controls\renderers\skia\NimbusCodeEditorSkia.dproj" Targets="Make" Properties="Config=$(Config);Platform=$(Platform);DCC_ExeOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCodeEditorSkia;DCC_BplOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCodeEditorSkia;DCC_DcpOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\NimbusCodeEditorSkia;DCC_DcuOutput=$(NimbusOutputRoot)obj\$(Platform)\$(Config)\NimbusCodeEditorSkia"/>
+  </Target>
+  <Target Name="ThemingTest:Make">
+    <MakeDir Directories="$(NimbusOutputRoot)$(Platform)\$(Config)\ThemingTest;$(NimbusOutputRoot)obj\$(Platform)\$(Config)\ThemingTest" Condition="'Make'!='Clean'"/>
+    <MSBuild Projects="NimbusForms.Theming\src\ThemingTest.dproj" Targets="Make" Properties="Config=$(Config);Platform=$(Platform);DCC_ExeOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\ThemingTest;DCC_BplOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\ThemingTest;DCC_DcpOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\ThemingTest;DCC_DcuOutput=$(NimbusOutputRoot)obj\$(Platform)\$(Config)\ThemingTest"/>
+  </Target>
+  <Target Name="ModernFormTest:Make">
+    <MakeDir Directories="$(NimbusOutputRoot)$(Platform)\$(Config)\ModernFormTest;$(NimbusOutputRoot)obj\$(Platform)\$(Config)\ModernFormTest" Condition="'Make'!='Clean'"/>
+    <MSBuild Projects="NimbusForms.Theming\test\ModernFormTest.dproj" Targets="Make" Properties="Config=$(Config);Platform=$(Platform);DCC_ExeOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\ModernFormTest;DCC_BplOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\ModernFormTest;DCC_DcpOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\ModernFormTest;DCC_DcuOutput=$(NimbusOutputRoot)obj\$(Platform)\$(Config)\ModernFormTest"/>
+  </Target>
+  <Target Name="GridDemo:Make">
+    <MakeDir Directories="$(NimbusOutputRoot)$(Platform)\$(Config)\GridDemo;$(NimbusOutputRoot)obj\$(Platform)\$(Config)\GridDemo" Condition="'Make'!='Clean'"/>
+    <MSBuild Projects="NimbusForms.Grid\test\GridDemo.dproj" Targets="Make" Properties="Config=$(Config);Platform=$(Platform);DCC_ExeOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\GridDemo;DCC_BplOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\GridDemo;DCC_DcpOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\GridDemo;DCC_DcuOutput=$(NimbusOutputRoot)obj\$(Platform)\$(Config)\GridDemo"/>
+  </Target>
+  <Target Name="LegacyGridDemo:Make">
+    <MakeDir Directories="$(NimbusOutputRoot)$(Platform)\$(Config)\LegacyGridDemo;$(NimbusOutputRoot)obj\$(Platform)\$(Config)\LegacyGridDemo" Condition="'Make'!='Clean'"/>
+    <MSBuild Projects="test\GridDemo.dproj" Targets="Make" Properties="Config=$(Config);Platform=$(Platform);DCC_ExeOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\LegacyGridDemo;DCC_BplOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\LegacyGridDemo;DCC_DcpOutput=$(NimbusOutputRoot)$(Platform)\$(Config)\LegacyGridDemo;DCC_DcuOutput=$(NimbusOutputRoot)obj\$(Platform)\$(Config)\LegacyGridDemo"/>
+  </Target>
+  <Target Name="Make"><CallTarget Targets="NimbusFormsRuntime:Make;NimbusFormsDesign:Make;NimbusStandardControls:Make;NimbusCodeEditorBasic:Make;NimbusCodeEditorStudio:Make;NimbusHexEditorWorkspace:Make;NimbusGridStudio:Make;NimbusLogViewer:Make;NimbusNotifications:Make;NimbusPropertyGrid:Make;NimbusCharts:Make;NimbusFormsDemo:Make;NimbusCodeEditorSkia:Make;ThemingTest:Make;ModernFormTest:Make;GridDemo:Make;LegacyGridDemo:Make"/></Target>
+  <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

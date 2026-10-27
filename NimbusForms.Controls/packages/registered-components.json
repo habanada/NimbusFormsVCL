@@ -1,0 +1,274 @@
+[
+  {
+    "name": "TThemedLogViewer",
+    "unit": "NimbusForms.Controls.LogViewer"
+  },
+  {
+    "name": "TThemedIdeNotificationBar",
+    "unit": "NimbusForms.Controls.NotificationBar"
+  },
+  {
+    "name": "TThemedChart",
+    "unit": "NimbusForms.Controls.Chart"
+  },
+  {
+    "name": "TThemedFinancialBusinessChart",
+    "unit": "NimbusForms.Controls.FinancialBusinessChart"
+  },
+  {
+    "name": "TThemedSparkline",
+    "unit": "NimbusForms.Controls.Sparkline"
+  },
+  {
+    "name": "TThemedMicroChart",
+    "unit": "NimbusForms.Controls.MicroChart"
+  },
+  {
+    "name": "TThemedKpiTile",
+    "unit": "NimbusForms.Controls.DashboardWidgets"
+  },
+  {
+    "name": "TThemedDeltaTile",
+    "unit": "NimbusForms.Controls.DashboardWidgets"
+  },
+  {
+    "name": "TThemedProgressMeter",
+    "unit": "NimbusForms.Controls.DashboardWidgets"
+  },
+  {
+    "name": "TThemedSegmentMeter",
+    "unit": "NimbusForms.Controls.DashboardWidgets"
+  },
+  {
+    "name": "TThemedStatusMatrix",
+    "unit": "NimbusForms.Controls.DashboardWidgets"
+  },
+  {
+    "name": "TThemedTrendArrow",
+    "unit": "NimbusForms.Controls.DashboardWidgets"
+  },
+  {
+    "name": "TThemedComparisonBars",
+    "unit": "NimbusForms.Controls.DashboardWidgets"
+  },
+  {
+    "name": "TThemedRadialScore",
+    "unit": "NimbusForms.Controls.DashboardWidgets"
+  },
+  {
+    "name": "TThemedActivityDots",
+    "unit": "NimbusForms.Controls.DashboardWidgets"
+  },
+  {
+    "name": "TThemedCapacityBars",
+    "unit": "NimbusForms.Controls.DashboardWidgets"
+  },
+  {
+    "name": "TThemedButton",
+    "unit": "NimbusForms.Controls.Button"
+  },
+  {
+    "name": "TThemedToolButton",
+    "unit": "NimbusForms.Controls.ToolButton"
+  },
+  {
+    "name": "TThemedToolBar",
+    "unit": "NimbusForms.Controls.ToolBar"
+  },
+  {
+    "name": "TThemedMenuBar",
+    "unit": "NimbusForms.Controls.MenuBar"
+  },
+  {
+    "name": "TThemedIdeStatusBar",
+    "unit": "NimbusForms.Controls.IdeStatusBar"
+  },
+  {
+    "name": "TThemedTagInput",
+    "unit": "NimbusForms.Controls.TagInput"
+  },
+  {
+    "name": "TThemedStepIndicator",
+    "unit": "NimbusForms.Controls.StepIndicator"
+  },
+  {
+    "name": "TThemedAvatar",
+    "unit": "NimbusForms.Controls.Avatar"
+  },
+  {
+    "name": "TThemedBadgeLabel",
+    "unit": "NimbusForms.Controls.BadgeLabel"
+  },
+  {
+    "name": "TThemedSplitContainer",
+    "unit": "NimbusForms.Controls.SplitContainer"
+  },
+  {
+    "name": "TThemedSplitter",
+    "unit": "NimbusForms.Controls.Splitter"
+  },
+  {
+    "name": "TThemedSplitButton",
+    "unit": "NimbusForms.Controls.SplitButton"
+  },
+  {
+    "name": "TThemedPanel",
+    "unit": "NimbusForms.Controls.Panel"
+  },
+  {
+    "name": "TThemedCheckBox",
+    "unit": "NimbusForms.Controls.CheckBox"
+  },
+  {
+    "name": "TThemedToggleBox",
+    "unit": "NimbusForms.Controls.ToggleBox"
+  },
+  {
+    "name": "TThemedLabel",
+    "unit": "NimbusForms.Controls.ThemedLabel"
+  },
+  {
+    "name": "TThemedStyledLabel",
+    "unit": "NimbusForms.Controls.StyledLabel"
+  },
+  {
+    "name": "TThemedRadioButton",
+    "unit": "NimbusForms.Controls.RadioButton"
+  },
+  {
+    "name": "TThemedProgressBar",
+    "unit": "NimbusForms.Controls.ProgressBar"
+  },
+  {
+    "name": "TThemedRichEdit",
+    "unit": "NimbusForms.Controls.RichEdit"
+  },
+  {
+    "name": "TThemedComboBox",
+    "unit": "NimbusForms.Controls.ComboBox"
+  },
+  {
+    "name": "TThemedListBox",
+    "unit": "NimbusForms.Controls.ListBox"
+  },
+  {
+    "name": "TThemedVirtualList",
+    "unit": "NimbusForms.Controls.VirtualList"
+  },
+  {
+    "name": "TThemedPropertyGrid",
+    "unit": "NimbusForms.Controls.PropertyGrid"
+  },
+  {
+    "name": "TThemedGroupBox",
+    "unit": "NimbusForms.Controls.GroupBox"
+  },
+  {
+    "name": "TThemedTrackBar",
+    "unit": "NimbusForms.Controls.TrackBar"
+  },
+  {
+    "name": "TThemedSeparator",
+    "unit": "NimbusForms.Controls.Separator"
+  },
+  {
+    "name": "TThemedTextBox",
+    "unit": "NimbusForms.Controls.TextBox"
+  },
+  {
+    "name": "TThemedNumericUpDown",
+    "unit": "NimbusForms.Controls.NumericUpDown"
+  },
+  {
+    "name": "TThemedRangeTrackBar",
+    "unit": "NimbusForms.Controls.RangeTrackBar"
+  },
+  {
+    "name": "TThemedHScrollBar",
+    "unit": "NimbusForms.Controls.HScrollBar"
+  },
+  {
+    "name": "TThemedVScrollBar",
+    "unit": "NimbusForms.Controls.VScrollBar"
+  },
+  {
+    "name": "TThemedIDEScrollBar",
+    "unit": "NimbusForms.Controls.IDEScrollBar"
+  },
+  {
+    "name": "TThemedCodeEditor",
+    "unit": "NimbusForms.Controls.CodeEditor"
+  },
+  {
+    "name": "TThemedDropdown",
+    "unit": "NimbusForms.Controls.Dropdown"
+  },
+  {
+    "name": "TThemedRatingControl",
+    "unit": "NimbusForms.Controls.Rating"
+  },
+  {
+    "name": "TThemedTabControl",
+    "unit": "NimbusForms.Controls.TabControl"
+  },
+  {
+    "name": "TThemedTreeView",
+    "unit": "NimbusForms.Controls.TreeView"
+  },
+  {
+    "name": "TThemedDatePicker",
+    "unit": "NimbusForms.Controls.DatePicker"
+  },
+  {
+    "name": "TThemedDateRangePicker",
+    "unit": "NimbusForms.Controls.DateRange"
+  },
+  {
+    "name": "TThemedIdeColorPicker",
+    "unit": "NimbusForms.Controls.IdeColorPicker"
+  },
+  {
+    "name": "TThemedIdeDateRangePicker",
+    "unit": "NimbusForms.Controls.IdeDateRange"
+  },
+  {
+    "name": "TThemedToolTip",
+    "unit": "NimbusForms.Controls.ToolTip"
+  },
+  {
+    "name": "TThemedPopupMenu",
+    "unit": "NimbusForms.Menus.PopupMenu"
+  },
+  {
+    "name": "TThemedGridView",
+    "unit": "NimbusForms.Grid.View"
+  },
+  {
+    "name": "TThemedHexEditor",
+    "unit": "NimbusForms.HexEditor.Control"
+  },
+  {
+    "name": "TThemedToolBarSpacer",
+    "unit": "NimbusForms.Controls.ToolBar"
+  },
+  {
+    "name": "TThemedBreadcrumbBar",
+    "unit": "NimbusForms.Controls.BreadcrumbBar"
+  },
+  {
+    "name": "TThemedIdeColorPickerButton",
+    "unit": "NimbusForms.Controls.IdeColorPicker"
+  },
+  {
+    "name": "TThemedHexInspector",
+    "unit": "NimbusForms.HexEditor.InspectorControl"
+  },
+  {
+    "name": "TThemedHexBookmarkList",
+    "unit": "NimbusForms.HexEditor.BookmarkList"
+  },
+  {
+    "name": "TThemedThemeManager",
+    "unit": "NimbusForms.Controls.ThemeManager"
+  }
+]

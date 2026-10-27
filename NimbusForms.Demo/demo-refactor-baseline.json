@@ -1,0 +1,274 @@
+{
+  "format": 1,
+  "source": "NimbusFormsDemo.dpr",
+  "originalSha256": "8e347b16724f7343a635ce72ede93987d5d2d12ae02dc4dd6cb561610f0d4e42",
+  "originalBytes": 286631,
+  "originalLines": 6351,
+  "methodHeaders": 221,
+  "includes": [
+    {
+      "path": "Sections/Demo.Resources.inc",
+      "sha256": "c572b0d72314f64452796065198adbd26283d822d0fdaf6b1ae1c013790db296",
+      "originalStartLine": 380,
+      "lines": 262
+    },
+    {
+      "path": "Sections/Demo.Types.inc",
+      "sha256": "ecb28018803d6af2cfa9275a05be2c087a2c36274b25d65a851ab226ba913da1",
+      "originalStartLine": 642,
+      "lines": 379
+    },
+    {
+      "path": "Sections/Main.Helpers.inc",
+      "sha256": "86599ad15c769f089a46b0a216fb88a5c9cdee791c64198a38a708a2d5a9aa1f",
+      "originalStartLine": 1021,
+      "lines": 56
+    },
+    {
+      "path": "Sections/PropertyGrid.inc",
+      "sha256": "5f2bae0b90d962add10f76e5aa985546602a8c99b8e8b5c4b3286626580d3375",
+      "originalStartLine": 1077,
+      "lines": 459
+    },
+    {
+      "path": "Sections/Workspace.inc",
+      "sha256": "2e20521d9a96f829a47381acd34bbd439e087f004e6bc937ad2b14e13d6cb9c8",
+      "originalStartLine": 1536,
+      "lines": 751
+    },
+    {
+      "path": "Sections/CodeEditor.inc",
+      "sha256": "2d8871f50cbebd05c57387c89feee6b8b9a46bbbcffad459e9c8a3b0e0ae6be5",
+      "originalStartLine": 2287,
+      "lines": 384
+    },
+    {
+      "path": "Sections/LogViewer.inc",
+      "sha256": "9e39f71ed422a407d44cd9e3d51b712f10b503196bd20d2cb1df75c4e824a9b4",
+      "originalStartLine": 2671,
+      "lines": 169
+    },
+    {
+      "path": "Sections/NotificationBar.inc",
+      "sha256": "3c0d8dedba85eab5386d11c831f48d38a80f6d595fd835c1ef9fc01dcc2f38aa",
+      "originalStartLine": 2840,
+      "lines": 186
+    },
+    {
+      "path": "Sections/Workspace.Page.inc",
+      "sha256": "66154efad29f1269195984256a50c1097ffd213f2f64629712cd06a86bb779f9",
+      "originalStartLine": 3026,
+      "lines": 13
+    },
+    {
+      "path": "Sections/InteractiveGrid.inc",
+      "sha256": "84fee088d8736d1d0452fd91faac5fd95e3d88e34acb0414c02578fdbefabfa1",
+      "originalStartLine": 3039,
+      "lines": 277
+    },
+    {
+      "path": "Sections/Main.Construction.inc",
+      "sha256": "74dfeab6d7bcca332bbeece76bbf1ceef37333690b5667f8b659f50882a23983",
+      "originalStartLine": 3316,
+      "lines": 52
+    },
+    {
+      "path": "Sections/Main.PopupMenus.inc",
+      "sha256": "b4185b9b1dbe779ad6ce836900630b633c7ddd1942fbc38879da9484612fd863",
+      "originalStartLine": 3368,
+      "lines": 46
+    },
+    {
+      "path": "Sections/Main.Header.inc",
+      "sha256": "50883d14afbb13ee75ee73db21b85960b58c1129f43d8c3c2d71ec1d50d198d0",
+      "originalStartLine": 3414,
+      "lines": 114
+    },
+    {
+      "path": "Sections/Main.StandardControls.inc",
+      "sha256": "383565aeb011f4cf86b24162c445c08950bde81ef235bdb89b466b62235d7f98",
+      "originalStartLine": 3528,
+      "lines": 257
+    },
+    {
+      "path": "Sections/Main.ToolbarMenus.inc",
+      "sha256": "b8ce24bb9ac2acfafdf155d0793866b9e29b5e8c1c97d81e1cc59ff751e2951f",
+      "originalStartLine": 3785,
+      "lines": 112
+    },
+    {
+      "path": "Sections/Main.Tabs.inc",
+      "sha256": "3343719f5169fc8af6a8610f0d88121a69f325ff1080230680130b65985ff90e",
+      "originalStartLine": 3897,
+      "lines": 20
+    },
+    {
+      "path": "Sections/ChartGalleries.inc",
+      "sha256": "d942e9eb43e843259de57ae837a9cc2de7db6020a793bde58f792855ab4492f9",
+      "originalStartLine": 3917,
+      "lines": 250
+    },
+    {
+      "path": "Sections/Main.StepIndicator.inc",
+      "sha256": "2d483dac73f8ac05316ef4ba1e5621596366b7093460346645098b2c0a34f0df",
+      "originalStartLine": 4167,
+      "lines": 40
+    },
+    {
+      "path": "Sections/Gallery.Layout.inc",
+      "sha256": "91bbf3ae6594aac3bc085dc8967105d42628c8015f251cdd89ad523a22931950",
+      "originalStartLine": 4207,
+      "lines": 193
+    },
+    {
+      "path": "Sections/Gallery.Badges.inc",
+      "sha256": "20f9ce779686a73eac0d8327c2871229a67f88782da2a587ede4124ed7b74aff",
+      "originalStartLine": 4400,
+      "lines": 46
+    },
+    {
+      "path": "Sections/Gallery.ColorPickers.inc",
+      "sha256": "190df2e1cba7212f6baf8d322a6f752c6b57604a55739b7886ad4950aeba5351",
+      "originalStartLine": 4446,
+      "lines": 75
+    },
+    {
+      "path": "Sections/Gallery.ToolButtons.inc",
+      "sha256": "6d276f11ec4d36422fa5c36592f3eb0ef716a38b696bb9fb353fec0029ebbe9c",
+      "originalStartLine": 4521,
+      "lines": 62
+    },
+    {
+      "path": "Sections/Gallery.ToolBar.inc",
+      "sha256": "c2510d14b0b378980f27dcc1edc45383e3e585afbf4e495804c3aad5c80c3a47",
+      "originalStartLine": 4583,
+      "lines": 127
+    },
+    {
+      "path": "Sections/Gallery.MenuBar.inc",
+      "sha256": "0fb801a48ab76b0eeac1a03d8bccbdff5152553b2a2bf55dcde4d1223d5dc240",
+      "originalStartLine": 4710,
+      "lines": 154
+    },
+    {
+      "path": "Sections/Gallery.Breadcrumbs.inc",
+      "sha256": "8cb2179c35565f5e4cd6073db60562319a1c2c5c99631311b5a398602952b5d3",
+      "originalStartLine": 4864,
+      "lines": 33
+    },
+    {
+      "path": "Sections/Gallery.Tags.inc",
+      "sha256": "623cca48340a44824f5d279cb4eb02eed890848057712896d442ff5a274dc310",
+      "originalStartLine": 4897,
+      "lines": 51
+    },
+    {
+      "path": "Sections/Gallery.StepIndicator.inc",
+      "sha256": "a237edb8e6751f03c108a66ba1a88c2f0dea090ba3ab603cb87d2eaac008c62e",
+      "originalStartLine": 4948,
+      "lines": 85
+    },
+    {
+      "path": "Sections/Gallery.Avatars.inc",
+      "sha256": "19633e255dff985b6d64499bf12bd8bf397d7b052bb1b8d7e72b152156aa73e7",
+      "originalStartLine": 5033,
+      "lines": 77
+    },
+    {
+      "path": "Sections/Gallery.StyledLabels.inc",
+      "sha256": "d31fa069105a071269e81dd2cbcb6a2d09d23faebdb3af3593d0a9d92e434a8c",
+      "originalStartLine": 5110,
+      "lines": 26
+    },
+    {
+      "path": "Sections/Gallery.TreeView.inc",
+      "sha256": "a113bfbcbd271b65acd13cc8da641d4c02c2102dc80fcad7b718a624074f0315",
+      "originalStartLine": 5136,
+      "lines": 84
+    },
+    {
+      "path": "Sections/Gallery.DatePicker.inc",
+      "sha256": "33cf81a2ff562439e3635ed85d0be6430aad89b1612bd30ab025dc2669a92292",
+      "originalStartLine": 5220,
+      "lines": 94
+    },
+    {
+      "path": "Sections/Gallery.VirtualList.inc",
+      "sha256": "1006bbfdfcadb6abb83021dd1963430dd16737315310e19cb5f301c842acbaae",
+      "originalStartLine": 5314,
+      "lines": 78
+    },
+    {
+      "path": "Sections/Gallery.Workspace.inc",
+      "sha256": "5fdef16f17fab7affee5f9a4afb8f3ebd7600b451e09bdba08d99a4be8fcea81",
+      "originalStartLine": 5392,
+      "lines": 21
+    },
+    {
+      "path": "Sections/Gallery.DateRanges.inc",
+      "sha256": "ffda93a3c841c7a93fe705bbc4f1d836133a38fd815718e33418497de2ce1bc6",
+      "originalStartLine": 5413,
+      "lines": 145
+    },
+    {
+      "path": "Sections/Gallery.TabExamples.inc",
+      "sha256": "f8f8de4540e47ddca7298fc3dd3c1a4664815b14d39b8336875f55e9e526ea04",
+      "originalStartLine": 5558,
+      "lines": 14
+    },
+    {
+      "path": "Sections/Main.WorkspaceSample.inc",
+      "sha256": "27845d722b86a2ecf6ecca321ea6ee271df5d354c35c108a9d18fe7109f46891",
+      "originalStartLine": 5572,
+      "lines": 17
+    },
+    {
+      "path": "Sections/Main.StatusBar.inc",
+      "sha256": "f09defaaa073da49ee814fcc49c2b39d7576b2bdc97e66b1625fe6a0f6d23d65",
+      "originalStartLine": 5589,
+      "lines": 49
+    },
+    {
+      "path": "Sections/Main.ThemeSelection.inc",
+      "sha256": "b9d534f8d48f2da1a4ce9f1e2c786d3930392d8629757e5e03c0801c7fd086f7",
+      "originalStartLine": 5638,
+      "lines": 8
+    },
+    {
+      "path": "Sections/Main.DateRangeEvents.inc",
+      "sha256": "6663ea27f8039b8fbc14298971b1f226391e693b473273c9513ca4206096c7e9",
+      "originalStartLine": 5646,
+      "lines": 154
+    },
+    {
+      "path": "Sections/Main.StandardEvents.inc",
+      "sha256": "9f24c190000b39f387f6f50e87bd4697ea336551f634c391b4154dbef342fae6",
+      "originalStartLine": 5800,
+      "lines": 58
+    },
+    {
+      "path": "Sections/Main.VirtualListEvents.inc",
+      "sha256": "519d17c12e179a793c71fac68c7be7bfde31e4c1eafbe6d0d6df1d4a59bfa367",
+      "originalStartLine": 5858,
+      "lines": 189
+    },
+    {
+      "path": "Sections/Main.ScrollBars.inc",
+      "sha256": "1c87d507c523c16385143d5e8258e419d38db203e4c38b8aae955e2b41b1fe7a",
+      "originalStartLine": 6047,
+      "lines": 118
+    },
+    {
+      "path": "Sections/Main.TreeViewEvents.inc",
+      "sha256": "a9f115413e3cf0e7917e66bae0869e367b938098d45bf7441d0293a77175d45f",
+      "originalStartLine": 6165,
+      "lines": 46
+    },
+    {
+      "path": "Sections/Main.OtherEvents.inc",
+      "sha256": "e0f55f6819414b1f46fecb2ecc6f1e0f766c5cb437e10adeca354947a8397421",
+      "originalStartLine": 6211,
+      "lines": 127
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "format": 1,
+  "output": "bin",
+  "projects": [
+    {
+      "name": "NimbusStandardControls",
+      "title": "NimbusForms Standard Controls",
+      "form": "TStandardDemoForm",
+      "units": [
+        "NimbusForms.Demo.Standard",
+        "NimbusForms.Demo.Host",
+        "Vcl.Controls"
+      ]
+    },
+    {
+      "name": "NimbusCodeEditorBasic",
+      "title": "NimbusForms CodeEditor Basic",
+      "form": "TCodeBasicForm",
+      "units": [
+        "NimbusForms.Demo.CodeBasic",
+        "NimbusForms.Demo.Host",
+        "Vcl.Controls"
+      ]
+    },
+    {
+      "name": "NimbusCodeEditorStudio",
+      "title": "NimbusForms CodeEditor Studio",
+      "form": "TCodeStudioForm",
+      "units": [
+        "NimbusForms.Demo.CodeStudio",
+        "NimbusForms.Demo.Host",
+        "Vcl.Controls"
+      ]
+    },
+    {
+      "name": "NimbusHexEditorWorkspace",
+      "title": "NimbusForms HexEditor Workspace",
+      "form": "TBinaryWorkspaceForm",
+      "units": [
+        "NimbusForms.Demo.BinaryWorkspace",
+        "NimbusForms.Demo.Host",
+        "Vcl.Controls"
+      ]
+    },
+    {
+      "name": "NimbusGridStudio",
+      "title": "NimbusForms Grid Studio",
+      "form": "TGridStudioForm",
+      "units": [
+        "NimbusForms.Demo.GridStudio",
+        "NimbusForms.Demo.Host",
+        "Vcl.Controls"
+      ]
+    },
+    {
+      "name": "NimbusLogViewer",
+      "title": "NimbusForms LogViewer",
+      "form": "TDemoHostForm",
+      "units": [
+        "NimbusForms.Demo.Host",
+        "NimbusForms.Demo.LogViewer",
+        "Vcl.Controls"
+      ],
+      "variables": "  Panel: TLogViewerDemo;\r\n",
+      "setup": "    Panel := TLogViewerDemo.Create(Demo); Panel.Parent := Demo.Body; Panel.Align := alClient;\r\n"
+    },
+    {
+      "name": "NimbusNotifications",
+      "title": "NimbusForms Notifications",
+      "form": "TDemoHostForm",
+      "units": [
+        "NimbusForms.Demo.Host",
+        "NimbusForms.Demo.Notifications",
+        "Vcl.Controls"
+      ],
+      "variables": "  Panel: TNotificationBarDemo;\r\n",
+      "setup": "    Panel := TNotificationBarDemo.Create(Demo); Panel.Parent := Demo.Body; Panel.Align := alClient;\r\n"
+    },
+    {
+      "name": "NimbusPropertyGrid",
+      "title": "NimbusForms PropertyGrid",
+      "form": "TDemoHostForm",
+      "units": [
+        "NimbusForms.Demo.Host",
+        "NimbusForms.Demo.Properties",
+        "NimbusForms.Controls.TabControl",
+        "Vcl.Controls"
+      ],
+      "variables": "  Tabs: TThemedTabControl;\r\n",
+      "setup": "    Tabs := TThemedTabControl.Create(Demo); Tabs.Parent := Demo.Body; Tabs.Align := alClient; AddNimbusPropertyGridGallery(Tabs);\r\n"
+    },
+    {
+      "name": "NimbusCharts",
+      "title": "NimbusForms Charts and Dashboards",
+      "form": "TDemoHostForm",
+      "units": [
+        "NimbusForms.Demo.Host",
+        "NimbusForms.Demo.ChartsGallery",
+        "NimbusForms.Demo.Charts",
+        "NimbusForms.Demo.MiniCharts",
+        "NimbusForms.Controls.TabControl",
+        "Vcl.Controls"
+      ],
+      "variables": "  Tabs: TThemedTabControl;\r\n",
+      "setup": "    Tabs := TThemedTabControl.Create(Demo); Tabs.Parent := Demo.Body; Tabs.Align := alClient;\r\n    AddNimbusChartsDemo(Tabs); AddRemainingNimbusChartsDemo(Tabs); AddNimbusMiniGallery(Tabs); AddNimbusMicroGallery(Tabs); AddNimbusDashboardGallery(Tabs); AddNimbusPerformanceGallery(Tabs);\r\n"
+    }
+  ]
+}

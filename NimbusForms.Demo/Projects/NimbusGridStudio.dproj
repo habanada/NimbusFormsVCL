@@ -1,0 +1,279 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{BA62D3DB-865A-0BD8-61F1-B41F3FAE488C}</ProjectGuid>
+    <MainSource>NimbusGridStudio.dpr</MainSource>
+    <Base>True</Base>
+    <Config Condition="'$(Config)'==''">Debug</Config>
+    <Platform Condition="'$(Platform)'==''">Win32</Platform>
+    <ProjectName Condition="'$(ProjectName)'==''">NimbusGridStudio</ProjectName>
+    <TargetedPlatforms>3</TargetedPlatforms>
+    <AppType>Application</AppType>
+    <FrameworkType>VCL</FrameworkType>
+    <ProjectVersion>20.1</ProjectVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+    <Base>true</Base>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_1)'!=''">
+    <Cfg_1>true</Cfg_1>
+    <CfgParent>Base</CfgParent>
+    <Base>true</Base>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_2)'!=''">
+    <Cfg_2>true</Cfg_2>
+    <CfgParent>Base</CfgParent>
+    <Base>true</Base>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Base)'!=''">
+    <SanitizedProjectName>NimbusGridStudio</SanitizedProjectName>
+    <DCC_UnitSearchPath>..\..\NimbusForms.Controls\src;..\..\NimbusForms.Theming\src;..;Shared;..\..\NimbusForms.Grid\src;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+    <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;System;Xml;Data;Datasnap;Web;Soap;$(DCC_Namespace)</DCC_Namespace>
+    <DCC_ExeOutput>..\..\bin</DCC_ExeOutput>
+    <DCC_DcuOutput>..\..\bin\obj\$(Platform)\$(Config)\NimbusGridStudio</DCC_DcuOutput>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Cfg_1)'!=''">
+    <DCC_Define>DEBUG;FRAMEWORK_VCL;$(DCC_Define)</DCC_Define>
+    <DCC_Optimize>false</DCC_Optimize>
+    <DCC_GenerateStackFrames>true</DCC_GenerateStackFrames>
+    <DCC_DebugInformation>2</DCC_DebugInformation>
+    <DCC_LocalDebugSymbols>true</DCC_LocalDebugSymbols>
+    <DCC_RangeChecking>true</DCC_RangeChecking>
+    <DCC_IntegerOverflowCheck>true</DCC_IntegerOverflowCheck>
+    <BT_BuildType>Debug</BT_BuildType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Cfg_2)'!=''">
+    <DCC_Define>RELEASE;FRAMEWORK_VCL;$(DCC_Define)</DCC_Define>
+    <DCC_Optimize>true</DCC_Optimize>
+    <DCC_DebugInformation>0</DCC_DebugInformation>
+    <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
+    <BT_BuildType>Release</BT_BuildType>
+  </PropertyGroup>
+  <ItemGroup>
+    <DelphiCompile Include="$(MainSource)"><MainSource>MainSource</MainSource></DelphiCompile>
+    <DCCReference Include="..\..\NimbusForms.Theming\src\NimbusForms.Theming.Types.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Theming\src\NimbusForms.Theming.Palette.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Theming\src\NimbusForms.Theming.Strings.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Theming\src\NimbusForms.Theming.WinVersion.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Theming\src\NimbusForms.Theming.Win32.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Theming\src\NimbusForms.Theming.PresetFactory.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Theming\src\NimbusForms.Theming.Serializer.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Theming\src\NimbusForms.Theming.Presets.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Theming\src\NimbusForms.Theming.Manager.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.Types.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.Base.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.Cell.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.CellMetadata.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.CellRenderer.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.CellRendererIntf.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.CellRendererParts.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.CellRenderers.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.CellRenderers.Content.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.CellRenderers.Input.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.CellRenderers.Visual.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.CellVisual.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.CellVisualRenderer.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.ClipboardExporter.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.ClipboardOptions.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.ClipboardParser.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.ColorValue.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.Column.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.ColumnBand.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.ColumnBandCollection.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.ColumnCollection.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.ControlApi.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.ControlAutoSize.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.ControlBase.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.ControlCells.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.ControlClipboard.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.ControlDrag.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.ControlEdit.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.ControlFilter.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.ControlFormatConditions.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.ControlHit.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.ControlKeys.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.ControlLayout.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.ControlMasterDetail.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.ControlMouse.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.ControlPaint.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.ControlRows.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.ControlSearch.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.ControlSummary.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.ControlUndo.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.ControlVisual.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.CsvExporter.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.DataControllerBase.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.DataControllerIntf.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.DataSetController.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.DataSourceResolver.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.DataStrings.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.DetailGridColumn.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.DetailGridHitInfo.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.DetailGridOptions.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.DetailGridRowVisual.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.DetailItem.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.DetailItemCollection.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.DetailOptions.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.DetailRelation.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.DetailRelationCollection.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.DetailStrings.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.DistinctValue.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.DistinctValueList.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.DistinctValueProvider.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.DragData.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.DragDropOptions.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.EditOptions.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.Editor.Choice.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.Editor.Text.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.Editor.Value.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.EditorBase.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.EditorControls.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.EditorFactory.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.EditorHost.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.EditorIntf.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.EditorOptions.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.EditorSupport.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.EditStrings.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.Events.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.Events.DragDrop.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.Events.MasterDetail.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.Events.Paste.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.Events.Rows.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.Events.Search.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.Events.Undo.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.Events.Visual.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.Export.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.ExportData.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.ExportIntf.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.ExportOptions.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.ExportSupport.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.FilterDescriptor.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.FilterEvaluator.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.FilterStrings.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.FormatCondition.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.FormatConditionCollection.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.FormatConditionContext.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.FormatConditionDesigner.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.FormatConditionEvaluator.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.FormatConditionEvents.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.FormatConditionModel.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.FormatConditionSerializer.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.FormatConditionSetModel.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.FormatConditionStrings.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.FormatConditionTypes.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.FormatConditionValidation.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.FormatDesignerControls.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.FormatDesignerStrings.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.FormatStyle.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.FormatStyleModel.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.GdiCache.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.GdiText.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.GridFilter.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.GroupDescriptor.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.GroupDescriptorCollection.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.GroupingOptions.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.HeaderFilterPopup.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.HeaderRenderer.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.HitInfo.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.HtmlExporter.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.InlineEditorGeometry.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.JsonExporter.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.ListDataController.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.MasterDetailCache.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.MasterDetailData.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.MasterDetailStrings.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.NumericRange.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.OleDragDrop.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.PaintStrings.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.Primitives.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.RenderContext.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.Renderer.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.RenderMetrics.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.Row.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.RowActionOptions.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.RowList.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.RowMoveOptions.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.RowView.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.RowViewBuilder.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.SearchEngine.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.SearchMatch.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.SearchOptions.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.SearchPanel.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.SearchResult.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.SearchStrings.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.SelectionModel.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.SelectionOptions.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.SelectionRenderer.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.StringSet.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.SvgDocument.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.SvgPath.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.SvgRenderer.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.SvgValues.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.SvgXml.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.ToolTipHost.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.Types.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.UndoManager.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.UndoOptions.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.UndoStrings.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.UndoTypes.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.ValueAccessor.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.ValueConverter.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.ValueFormatter.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.View.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.ViewRow.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.VisualAction.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.VisualActionCommand.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.VisualImage.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.VisualImageRenderer.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Grid\src\NimbusForms.Grid.VisualStrings.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.GridTypes.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Rendering.GridCells.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.GridEditors.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.Button.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.IdeStatusBar.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.Avatar.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Rendering.Avatar.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Rendering.IdeStatusBar.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.Panel.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.CheckBox.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.ToggleBox.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.ThemedLabel.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.ComboBox.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.TextBox.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.Rating.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.DatePicker.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Menus.PopupMenu.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Rendering.Types.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Rendering.Canvas.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Rendering.Button.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Rendering.Panel.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Rendering.CheckBox.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Rendering.ToggleBox.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Rendering.ThemedLabel.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Rendering.ComboBox.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Rendering.TextBox.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Rendering.Rating.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Rendering.DatePicker.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Rendering.PopupMenu.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.Strings.pas"/>
+    <DCCReference Include="Shared\NimbusForms.Demo.GridEditors.pas"/>
+    <DCCReference Include="Shared\NimbusForms.Demo.GridStudio.pas"/>
+    <DCCReference Include="Shared\NimbusForms.Demo.Host.pas"/>
+    <DCCReference Include="Shared\NimbusForms.Demo.Strings.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.ToolTip.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Rendering.ToolTip.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.Avatar.Badges.pas"/>
+    <BuildConfiguration Include="Base"><Key>Base</Key></BuildConfiguration>
+    <BuildConfiguration Include="Debug"><Key>Cfg_1</Key><CfgParent>Base</CfgParent></BuildConfiguration>
+    <BuildConfiguration Include="Release"><Key>Cfg_2</Key><CfgParent>Base</CfgParent></BuildConfiguration>
+  </ItemGroup>
+  <ProjectExtensions>
+    <Borland.Personality>Delphi.Personality.12</Borland.Personality>
+    <Borland.ProjectType/>
+    <BorlandProject>
+      <Delphi.Personality><Source><Source Name="MainSource">NimbusGridStudio.dpr</Source></Source></Delphi.Personality>
+      <Platforms><Platform value="Win32">True</Platform><Platform value="Win64">True</Platform></Platforms>
+    </BorlandProject>
+    <ProjectFileVersion>12</ProjectFileVersion>
+  </ProjectExtensions>
+  <Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets"/>
+</Project>

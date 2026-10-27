@@ -1,0 +1,228 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{8DBF6E8A-A397-4B2F-B09F-3CF825D0CA8C}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="NimbusForms.Controls\packages\NimbusFormsRuntime.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="NimbusForms.Controls\packages\NimbusFormsDesign.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="NimbusForms.Demo\Projects\NimbusStandardControls.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="NimbusForms.Demo\Projects\NimbusCodeEditorBasic.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="NimbusForms.Demo\Projects\NimbusCodeEditorStudio.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="NimbusForms.Demo\Projects\NimbusHexEditorWorkspace.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="NimbusForms.Demo\Projects\NimbusGridStudio.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="NimbusForms.Demo\Projects\NimbusLogViewer.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="NimbusForms.Demo\Projects\NimbusNotifications.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="NimbusForms.Demo\Projects\NimbusPropertyGrid.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="NimbusForms.Demo\Projects\NimbusCharts.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="NimbusForms.Demo\NimbusFormsDemo.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="NimbusForms.Controls\renderers\skia\NimbusCodeEditorSkia.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="NimbusForms.Theming\test\ModernFormTest.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="NimbusForms.Grid\test\GridDemo.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="NimbusForms.Controls\tests\NimbusHexEditorDUnitXTests.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="NimbusForms.Controls\tests\PieceTableStressRunner.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="NimbusFormsRuntime">
+        <MSBuild Projects="NimbusForms.Controls\packages\NimbusFormsRuntime.dproj"/>
+    </Target>
+    <Target Name="NimbusFormsRuntime:Clean">
+        <MSBuild Projects="NimbusForms.Controls\packages\NimbusFormsRuntime.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="NimbusFormsRuntime:Make">
+        <MSBuild Projects="NimbusForms.Controls\packages\NimbusFormsRuntime.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="NimbusFormsDesign">
+        <MSBuild Projects="NimbusForms.Controls\packages\NimbusFormsDesign.dproj"/>
+    </Target>
+    <Target Name="NimbusFormsDesign:Clean">
+        <MSBuild Projects="NimbusForms.Controls\packages\NimbusFormsDesign.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="NimbusFormsDesign:Make">
+        <MSBuild Projects="NimbusForms.Controls\packages\NimbusFormsDesign.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="NimbusStandardControls">
+        <MSBuild Projects="NimbusForms.Demo\Projects\NimbusStandardControls.dproj"/>
+    </Target>
+    <Target Name="NimbusStandardControls:Clean">
+        <MSBuild Projects="NimbusForms.Demo\Projects\NimbusStandardControls.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="NimbusStandardControls:Make">
+        <MSBuild Projects="NimbusForms.Demo\Projects\NimbusStandardControls.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="NimbusCodeEditorBasic">
+        <MSBuild Projects="NimbusForms.Demo\Projects\NimbusCodeEditorBasic.dproj"/>
+    </Target>
+    <Target Name="NimbusCodeEditorBasic:Clean">
+        <MSBuild Projects="NimbusForms.Demo\Projects\NimbusCodeEditorBasic.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="NimbusCodeEditorBasic:Make">
+        <MSBuild Projects="NimbusForms.Demo\Projects\NimbusCodeEditorBasic.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="NimbusCodeEditorStudio">
+        <MSBuild Projects="NimbusForms.Demo\Projects\NimbusCodeEditorStudio.dproj"/>
+    </Target>
+    <Target Name="NimbusCodeEditorStudio:Clean">
+        <MSBuild Projects="NimbusForms.Demo\Projects\NimbusCodeEditorStudio.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="NimbusCodeEditorStudio:Make">
+        <MSBuild Projects="NimbusForms.Demo\Projects\NimbusCodeEditorStudio.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="NimbusHexEditorWorkspace">
+        <MSBuild Projects="NimbusForms.Demo\Projects\NimbusHexEditorWorkspace.dproj"/>
+    </Target>
+    <Target Name="NimbusHexEditorWorkspace:Clean">
+        <MSBuild Projects="NimbusForms.Demo\Projects\NimbusHexEditorWorkspace.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="NimbusHexEditorWorkspace:Make">
+        <MSBuild Projects="NimbusForms.Demo\Projects\NimbusHexEditorWorkspace.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="NimbusGridStudio">
+        <MSBuild Projects="NimbusForms.Demo\Projects\NimbusGridStudio.dproj"/>
+    </Target>
+    <Target Name="NimbusGridStudio:Clean">
+        <MSBuild Projects="NimbusForms.Demo\Projects\NimbusGridStudio.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="NimbusGridStudio:Make">
+        <MSBuild Projects="NimbusForms.Demo\Projects\NimbusGridStudio.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="NimbusLogViewer">
+        <MSBuild Projects="NimbusForms.Demo\Projects\NimbusLogViewer.dproj"/>
+    </Target>
+    <Target Name="NimbusLogViewer:Clean">
+        <MSBuild Projects="NimbusForms.Demo\Projects\NimbusLogViewer.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="NimbusLogViewer:Make">
+        <MSBuild Projects="NimbusForms.Demo\Projects\NimbusLogViewer.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="NimbusNotifications">
+        <MSBuild Projects="NimbusForms.Demo\Projects\NimbusNotifications.dproj"/>
+    </Target>
+    <Target Name="NimbusNotifications:Clean">
+        <MSBuild Projects="NimbusForms.Demo\Projects\NimbusNotifications.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="NimbusNotifications:Make">
+        <MSBuild Projects="NimbusForms.Demo\Projects\NimbusNotifications.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="NimbusPropertyGrid">
+        <MSBuild Projects="NimbusForms.Demo\Projects\NimbusPropertyGrid.dproj"/>
+    </Target>
+    <Target Name="NimbusPropertyGrid:Clean">
+        <MSBuild Projects="NimbusForms.Demo\Projects\NimbusPropertyGrid.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="NimbusPropertyGrid:Make">
+        <MSBuild Projects="NimbusForms.Demo\Projects\NimbusPropertyGrid.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="NimbusCharts">
+        <MSBuild Projects="NimbusForms.Demo\Projects\NimbusCharts.dproj"/>
+    </Target>
+    <Target Name="NimbusCharts:Clean">
+        <MSBuild Projects="NimbusForms.Demo\Projects\NimbusCharts.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="NimbusCharts:Make">
+        <MSBuild Projects="NimbusForms.Demo\Projects\NimbusCharts.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="NimbusFormsDemo">
+        <MSBuild Projects="NimbusForms.Demo\NimbusFormsDemo.dproj"/>
+    </Target>
+    <Target Name="NimbusFormsDemo:Clean">
+        <MSBuild Projects="NimbusForms.Demo\NimbusFormsDemo.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="NimbusFormsDemo:Make">
+        <MSBuild Projects="NimbusForms.Demo\NimbusFormsDemo.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="NimbusCodeEditorSkia">
+        <MSBuild Projects="NimbusForms.Controls\renderers\skia\NimbusCodeEditorSkia.dproj"/>
+    </Target>
+    <Target Name="NimbusCodeEditorSkia:Clean">
+        <MSBuild Projects="NimbusForms.Controls\renderers\skia\NimbusCodeEditorSkia.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="NimbusCodeEditorSkia:Make">
+        <MSBuild Projects="NimbusForms.Controls\renderers\skia\NimbusCodeEditorSkia.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ModernFormTest">
+        <MSBuild Projects="NimbusForms.Theming\test\ModernFormTest.dproj"/>
+    </Target>
+    <Target Name="ModernFormTest:Clean">
+        <MSBuild Projects="NimbusForms.Theming\test\ModernFormTest.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ModernFormTest:Make">
+        <MSBuild Projects="NimbusForms.Theming\test\ModernFormTest.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="GridDemo">
+        <MSBuild Projects="NimbusForms.Grid\test\GridDemo.dproj"/>
+    </Target>
+    <Target Name="GridDemo:Clean">
+        <MSBuild Projects="NimbusForms.Grid\test\GridDemo.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GridDemo:Make">
+        <MSBuild Projects="NimbusForms.Grid\test\GridDemo.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="NimbusHexEditorDUnitXTests">
+        <MSBuild Projects="NimbusForms.Controls\tests\NimbusHexEditorDUnitXTests.dproj"/>
+    </Target>
+    <Target Name="NimbusHexEditorDUnitXTests:Clean">
+        <MSBuild Projects="NimbusForms.Controls\tests\NimbusHexEditorDUnitXTests.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="NimbusHexEditorDUnitXTests:Make">
+        <MSBuild Projects="NimbusForms.Controls\tests\NimbusHexEditorDUnitXTests.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="PieceTableStressRunner">
+        <MSBuild Projects="NimbusForms.Controls\tests\PieceTableStressRunner.dproj"/>
+    </Target>
+    <Target Name="PieceTableStressRunner:Clean">
+        <MSBuild Projects="NimbusForms.Controls\tests\PieceTableStressRunner.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PieceTableStressRunner:Make">
+        <MSBuild Projects="NimbusForms.Controls\tests\PieceTableStressRunner.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="NimbusFormsRuntime;NimbusFormsDesign;NimbusStandardControls;NimbusCodeEditorBasic;NimbusCodeEditorStudio;NimbusHexEditorWorkspace;NimbusGridStudio;NimbusLogViewer;NimbusNotifications;NimbusPropertyGrid;NimbusCharts;NimbusFormsDemo;NimbusCodeEditorSkia;ModernFormTest;GridDemo;NimbusHexEditorDUnitXTests;PieceTableStressRunner"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="NimbusFormsRuntime:Clean;NimbusFormsDesign:Clean;NimbusStandardControls:Clean;NimbusCodeEditorBasic:Clean;NimbusCodeEditorStudio:Clean;NimbusHexEditorWorkspace:Clean;NimbusGridStudio:Clean;NimbusLogViewer:Clean;NimbusNotifications:Clean;NimbusPropertyGrid:Clean;NimbusCharts:Clean;NimbusFormsDemo:Clean;NimbusCodeEditorSkia:Clean;ModernFormTest:Clean;GridDemo:Clean;NimbusHexEditorDUnitXTests:Clean;PieceTableStressRunner:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="NimbusFormsRuntime:Make;NimbusFormsDesign:Make;NimbusStandardControls:Make;NimbusCodeEditorBasic:Make;NimbusCodeEditorStudio:Make;NimbusHexEditorWorkspace:Make;NimbusGridStudio:Make;NimbusLogViewer:Make;NimbusNotifications:Make;NimbusPropertyGrid:Make;NimbusCharts:Make;NimbusFormsDemo:Make;NimbusCodeEditorSkia:Make;ModernFormTest:Make;GridDemo:Make;NimbusHexEditorDUnitXTests:Make;PieceTableStressRunner:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

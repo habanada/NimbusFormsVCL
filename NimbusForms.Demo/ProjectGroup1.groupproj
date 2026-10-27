@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{52EA9708-E0F3-40A0-93F4-DC4C4907C33C}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="NimbusFormsDemo.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\NimbusForms.Grid\test\GridDemo.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="NimbusFormsDemo">
+        <MSBuild Projects="NimbusFormsDemo.dproj"/>
+    </Target>
+    <Target Name="NimbusFormsDemo:Clean">
+        <MSBuild Projects="NimbusFormsDemo.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="NimbusFormsDemo:Make">
+        <MSBuild Projects="NimbusFormsDemo.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="GridDemo">
+        <MSBuild Projects="..\NimbusForms.Grid\test\GridDemo.dproj"/>
+    </Target>
+    <Target Name="GridDemo:Clean">
+        <MSBuild Projects="..\NimbusForms.Grid\test\GridDemo.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GridDemo:Make">
+        <MSBuild Projects="..\NimbusForms.Grid\test\GridDemo.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="NimbusFormsDemo;GridDemo"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="NimbusFormsDemo:Clean;GridDemo:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="NimbusFormsDemo:Make;GridDemo:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

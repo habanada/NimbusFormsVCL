@@ -1,0 +1,13 @@
+{
+ "Events": [
+  "ThemedGridDetailItemsNeededEventArgs",
+  "ThemedGridDetailItemEventArgs",
+  "ThemedGridDetailItemActionEventArgs",
+  "ThemedGridDetailItemValueChangingEventArgs",
+  "ThemedGridDetailItemValueChangedEventArgs",
+  "ThemedGridSearchResultChangedEventArgs"
+ ],
+ "DragDrop": [],
+ "Paste": [],
+ "Rows": []
+}

@@ -1,0 +1,167 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{B41DD406-CD2D-1818-5575-9E3C332E89FB}</ProjectGuid>
+    <MainSource>NimbusStandardControls.dpr</MainSource>
+    <Base>True</Base>
+    <Config Condition="'$(Config)'==''">Debug</Config>
+    <Platform Condition="'$(Platform)'==''">Win32</Platform>
+    <ProjectName Condition="'$(ProjectName)'==''">NimbusStandardControls</ProjectName>
+    <TargetedPlatforms>3</TargetedPlatforms>
+    <AppType>Application</AppType>
+    <FrameworkType>VCL</FrameworkType>
+    <ProjectVersion>20.1</ProjectVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+    <Base>true</Base>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_1)'!=''">
+    <Cfg_1>true</Cfg_1>
+    <CfgParent>Base</CfgParent>
+    <Base>true</Base>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_2)'!=''">
+    <Cfg_2>true</Cfg_2>
+    <CfgParent>Base</CfgParent>
+    <Base>true</Base>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Base)'!=''">
+    <SanitizedProjectName>NimbusStandardControls</SanitizedProjectName>
+    <DCC_UnitSearchPath>..\..\NimbusForms.Controls\src;..\..\NimbusForms.Theming\src;..;Shared;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+    <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;System;Xml;Data;Datasnap;Web;Soap;$(DCC_Namespace)</DCC_Namespace>
+    <DCC_ExeOutput>..\..\bin</DCC_ExeOutput>
+    <DCC_DcuOutput>..\..\bin\obj\$(Platform)\$(Config)\NimbusStandardControls</DCC_DcuOutput>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Cfg_1)'!=''">
+    <DCC_Define>DEBUG;FRAMEWORK_VCL;$(DCC_Define)</DCC_Define>
+    <DCC_Optimize>false</DCC_Optimize>
+    <DCC_GenerateStackFrames>true</DCC_GenerateStackFrames>
+    <DCC_DebugInformation>2</DCC_DebugInformation>
+    <DCC_LocalDebugSymbols>true</DCC_LocalDebugSymbols>
+    <DCC_RangeChecking>true</DCC_RangeChecking>
+    <DCC_IntegerOverflowCheck>true</DCC_IntegerOverflowCheck>
+    <BT_BuildType>Debug</BT_BuildType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Cfg_2)'!=''">
+    <DCC_Define>RELEASE;FRAMEWORK_VCL;$(DCC_Define)</DCC_Define>
+    <DCC_Optimize>true</DCC_Optimize>
+    <DCC_DebugInformation>0</DCC_DebugInformation>
+    <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
+    <BT_BuildType>Release</BT_BuildType>
+  </PropertyGroup>
+  <ItemGroup>
+    <DelphiCompile Include="$(MainSource)"><MainSource>MainSource</MainSource></DelphiCompile>
+    <DCCReference Include="..\..\NimbusForms.Theming\src\NimbusForms.Theming.Types.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Theming\src\NimbusForms.Theming.Palette.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Theming\src\NimbusForms.Theming.Strings.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Theming\src\NimbusForms.Theming.WinVersion.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Theming\src\NimbusForms.Theming.Win32.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Theming\src\NimbusForms.Theming.PresetFactory.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Theming\src\NimbusForms.Theming.Serializer.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Theming\src\NimbusForms.Theming.Presets.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Theming\src\NimbusForms.Theming.Manager.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.Types.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.Base.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.Button.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.ToolButton.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.ToolBar.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.MenuBar.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.IdeStatusBar.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.BreadcrumbBar.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.TagInput.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.Splitter.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Rendering.Splitter.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Rendering.BadgeLabel.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Rendering.TagInput.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Rendering.BreadcrumbBar.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Rendering.IdeStatusBar.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.ToolTip.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.Panel.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.CheckBox.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.ToggleBox.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.ThemedLabel.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.RadioButton.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.ProgressBar.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.RichEdit.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.ComboBox.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.ListBox.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.TrackBar.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.Separator.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.TextBox.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.NumericUpDown.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.Dropdown.Types.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.DropdownList.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.DropdownPopup.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.Dropdown.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.Rating.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.TabControl.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.TreeView.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.DatePicker.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.DateRange.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.IdeColorPicker.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Rendering.IdeColorPicker.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Menus.PopupMenu.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Rendering.Types.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Rendering.Canvas.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Rendering.Button.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Rendering.ToolButton.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Rendering.ToolBar.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Rendering.MenuBar.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Rendering.ToolTip.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Rendering.Panel.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Rendering.CheckBox.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Rendering.ToggleBox.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Rendering.ThemedLabel.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Rendering.RadioButton.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Rendering.ProgressBar.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Rendering.RichEdit.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Rendering.ComboBox.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Rendering.ListBox.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Rendering.TrackBar.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Rendering.Separator.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Rendering.TextBox.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Rendering.NumericUpDown.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Rendering.Dropdown.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Rendering.Rating.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Rendering.TabControl.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Rendering.TreeView.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Rendering.DatePicker.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Rendering.DateRange.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Rendering.PopupMenu.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.ColorPalettes.Catalog.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.KeyboardEdit.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.Strings.pas"/>
+    <DCCReference Include="Shared\NimbusForms.Demo.Host.pas"/>
+    <DCCReference Include="Shared\NimbusForms.Demo.Standard.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.LogViewer.Types.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.LogViewer.Encoding.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.LogViewer.Model.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.LogViewer.Monitor.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.LogViewer.View.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.LogViewer.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Rendering.LogViewer.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.Avatar.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Rendering.Avatar.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.ScrollBarBase.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.HScrollBar.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.IDEScrollBar.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Rendering.IDEScrollBar.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Rendering.ScrollBar.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Controls.Avatar.Badges.pas"/>
+    <DCCReference Include="..\..\NimbusForms.Controls\src\NimbusForms.Rendering.UnicodeText.pas"/>
+    <DCCReference Include="Shared\NimbusForms.Demo.AvatarChecks.pas"/>
+    <DCCReference Include="Shared\NimbusForms.Demo.Avatars.pas"/>
+    <BuildConfiguration Include="Base"><Key>Base</Key></BuildConfiguration>
+    <BuildConfiguration Include="Debug"><Key>Cfg_1</Key><CfgParent>Base</CfgParent></BuildConfiguration>
+    <BuildConfiguration Include="Release"><Key>Cfg_2</Key><CfgParent>Base</CfgParent></BuildConfiguration>
+  </ItemGroup>
+  <ProjectExtensions>
+    <Borland.Personality>Delphi.Personality.12</Borland.Personality>
+    <Borland.ProjectType/>
+    <BorlandProject>
+      <Delphi.Personality><Source><Source Name="MainSource">NimbusStandardControls.dpr</Source></Source></Delphi.Personality>
+      <Platforms><Platform value="Win32">True</Platform><Platform value="Win64">True</Platform></Platforms>
+    </BorlandProject>
+    <ProjectFileVersion>12</ProjectFileVersion>
+  </ProjectExtensions>
+  <Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets"/>
+</Project>

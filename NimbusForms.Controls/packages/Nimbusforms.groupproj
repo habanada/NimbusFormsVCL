@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{DF7E380B-0B44-47EF-A339-789A69FDE01D}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="NimbusFormsRuntime.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="NimbusFormsDesign.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="NimbusFormsRuntime">
+        <MSBuild Projects="NimbusFormsRuntime.dproj"/>
+    </Target>
+    <Target Name="NimbusFormsRuntime:Clean">
+        <MSBuild Projects="NimbusFormsRuntime.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="NimbusFormsRuntime:Make">
+        <MSBuild Projects="NimbusFormsRuntime.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="NimbusFormsDesign">
+        <MSBuild Projects="NimbusFormsDesign.dproj"/>
+    </Target>
+    <Target Name="NimbusFormsDesign:Clean">
+        <MSBuild Projects="NimbusFormsDesign.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="NimbusFormsDesign:Make">
+        <MSBuild Projects="NimbusFormsDesign.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="NimbusFormsRuntime;NimbusFormsDesign"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="NimbusFormsRuntime:Clean;NimbusFormsDesign:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="NimbusFormsRuntime:Make;NimbusFormsDesign:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
