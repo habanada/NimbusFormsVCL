@@ -11,7 +11,10 @@ unit NimbusForms.Controls.ThemedLabel;
 interface
 
 uses
+  Winapi.Windows,
   System.Classes,
+  System.Types,
+  Vcl.Graphics,
   Vcl.Controls,
   Vcl.StdCtrls,
   NimbusForms.Theming.Palette,
@@ -22,6 +25,8 @@ type
   private
     FPalette: TThemePalette;
     FRenderCanvas: INimbusRenderCanvas;
+    FMeasureCanvas: INimbusRenderCanvas;
+    FMeasureBitmap: TBitmap;
     FUseMutedForeColor: Boolean;
     FThemeRegistered: Boolean;
     procedure SetUseMutedForeColor(const AValue: Boolean);
@@ -30,6 +35,7 @@ type
     procedure SetParent(AParent: TWinControl); override;
     procedure RegisterThemeAware;
     procedure Paint; override;
+    procedure DoDrawText(var Rect: TRect; Flags: Longint); override;
     property UseMutedForeColor: Boolean read FUseMutedForeColor write SetUseMutedForeColor default False;
   public
     constructor Create(AOwner: TComponent); override;
@@ -73,6 +79,9 @@ type
 implementation
 
 uses
+  System.Math,
+  System.SysUtils,
+  NimbusForms.Rendering.Types,
   NimbusForms.Theming.Manager,
   NimbusForms.Rendering.ThemedLabel;
 
@@ -80,8 +89,12 @@ constructor TCustomThemedLabel.Create(AOwner: TComponent);
 begin
   inherited Create(AOwner);
   FRenderCanvas := TNimbusRenderCanvas.Create;
+  FMeasureCanvas := TNimbusRenderCanvas.Create;
+  FMeasureBitmap := TBitmap.Create;
+  FMeasureBitmap.SetSize(1, 1);
   AutoSize := True;
   Transparent := True;
+  AdjustBounds;
 end;
 
 destructor TCustomThemedLabel.Destroy;
@@ -89,6 +102,8 @@ begin
   if FThemeRegistered then ThemeManager.UnregisterAware(Self);
   FPalette.Free;
   FRenderCanvas := nil;
+  FMeasureCanvas := nil;
+  FreeAndNil(FMeasureBitmap);
   inherited Destroy;
 end;
 
@@ -130,6 +145,40 @@ begin
     Exit;
   FUseMutedForeColor := AValue;
   Invalidate;
+end;
+
+procedure TCustomThemedLabel.DoDrawText(var Rect: TRect; Flags: Longint);
+var
+  LFlags: TNimbusTextFlags;
+  LSize: TSize;
+  LText: string;
+  LWidth: Integer;
+begin
+  if (Flags and DT_CALCRECT = 0) or (FMeasureCanvas = nil) or (FMeasureBitmap = nil) then
+  begin
+    inherited DoDrawText(Rect, Flags);
+    Exit;
+  end;
+  LFlags := [];
+  LWidth := 0;
+  if WordWrap then
+  begin
+    Include(LFlags, ntfWordWrap);
+    LWidth := Max(1, Rect.Width);
+  end
+  else Include(LFlags, ntfSingleLine);
+  if not ShowAccelChar then Include(LFlags, ntfNoPrefix);
+  if UseRightToLeftAlignment then Include(LFlags, ntfRightToLeft);
+  LText := Caption;
+  if (LText = '') or (ShowAccelChar and (LText = '&')) then LText := LText + ' ';
+  FMeasureCanvas.BeginRender(FMeasureBitmap.Canvas);
+  try
+    LSize := FMeasureCanvas.MeasureText(LText, Font, LWidth, LFlags);
+  finally
+    FMeasureCanvas.EndRender;
+  end;
+  Rect.Right := Rect.Left + LSize.cx;
+  Rect.Bottom := Rect.Top + LSize.cy;
 end;
 
 procedure TCustomThemedLabel.Paint;

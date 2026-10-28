@@ -46,6 +46,7 @@ var
   LImages: TCustomImageList;
   LGutter, LGap, LPadding, LArrow, LMinimumHeight: Integer;
   LShortcut: string;
+  LOldStyle: TFontStyles;
 begin
   if (ACanvas = nil) or (AFont = nil) or (AMenuItem = nil) then
     Exit;
@@ -60,7 +61,13 @@ begin
   LPadding := NimbusScaleValue(12, APPI);
   LArrow := NimbusScaleValue(14, APPI);
   LMinimumHeight := NimbusScaleValue(26, APPI);
-  LCaptionSize := ACanvas.MeasureText(AMenuItem.Caption, AFont, 0, [ntfSingleLine]);
+  LOldStyle := AFont.Style;
+  try
+    if AMenuItem.Default then AFont.Style := LOldStyle + [fsBold];
+    LCaptionSize := ACanvas.MeasureText(AMenuItem.Caption, AFont, 0, [ntfSingleLine]);
+  finally
+    AFont.Style := LOldStyle;
+  end;
   LShortcut := ShortCutToText(AMenuItem.ShortCut);
   LShortcutSize := ACanvas.MeasureText(LShortcut, AFont, 0, [ntfSingleLine, ntfNoPrefix]);
   AWidth := LGutter + LPadding + LCaptionSize.cx + LPadding + LArrow;
@@ -80,6 +87,7 @@ var
   LBack, LFore, LBorder, LGlyph: TThemeColor;
   LImages: TCustomImageList;
   LTextRect, LShortcutRect, LIndicatorRect, LImageRect: TRect;
+  LShortcutSize: TSize;
   LGutter, LPadding, LArrow, LGap, LArrowHalf, LCenterY, LImageX, LImageY: Integer;
   LShortcut: string;
   LSelected, LRTL: Boolean;
@@ -150,7 +158,7 @@ begin
   if LRTL then
   begin
     LTextRect := Rect(ARect.Left + LArrow + LPadding, ARect.Top, ARect.Right - LGutter - LPadding, ARect.Bottom);
-    LShortcutRect := Rect(ARect.Left + LPadding, ARect.Top, LTextRect.Left - LGap, ARect.Bottom);
+    LShortcutRect := LTextRect;
   end
   else
   begin
@@ -159,12 +167,17 @@ begin
   end;
   if LShortcut <> '' then
   begin
+    LShortcutSize := ACanvas.MeasureText(LShortcut, AFont, 0, [ntfSingleLine, ntfNoPrefix]);
     if LRTL then
-      ACanvas.DrawText(LShortcut, AFont, LFore, LShortcutRect, [ntfVCenter, ntfSingleLine, ntfNoPrefix, ntfRightToLeft])
+    begin
+      LShortcutRect.Right := LShortcutRect.Left + LShortcutSize.cx;
+      ACanvas.DrawText(LShortcut, AFont, LFore, LShortcutRect, [ntfVCenter, ntfSingleLine, ntfNoPrefix, ntfRightToLeft]);
+      LTextRect.Left := LShortcutRect.Right + LGap;
+    end
     else
     begin
       ACanvas.DrawText(LShortcut, AFont, LFore, LShortcutRect, [ntfRight, ntfVCenter, ntfSingleLine, ntfNoPrefix]);
-      LTextRect.Right := LTextRect.Right - ACanvas.MeasureText(LShortcut, AFont, 0, [ntfSingleLine, ntfNoPrefix]).cx - LGap;
+      LTextRect.Right := LTextRect.Right - LShortcutSize.cx - LGap;
     end;
   end;
   LOldStyle := AFont.Style;

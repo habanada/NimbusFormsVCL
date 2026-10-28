@@ -45,6 +45,9 @@ The demos can also compile the library sources directly.
 For split-container child controls and DFM compatibility, see the
 [split-container guide](NimbusForms.Controls/SPLIT-CONTAINER.md).
 
+For caption sizing, wrapping and ellipsis behavior, see the
+[text layout guide](NimbusForms.Controls/TEXT-LAYOUT.md).
+
 Build and source-check scripts locate the checkout relative to themselves; no
 fixed drive or checkout folder is required. CodeEditor and LogViewer regression
 executables locate fixtures relative to the checkout and must run inside it.

@@ -408,7 +408,7 @@ begin
     FStringFormat.SetLineAlignment(StringAlignmentFar)
   else
     FStringFormat.SetLineAlignment(StringAlignmentNear);
-  if ntfEndEllipsis in AFlags then
+  if (ntfEndEllipsis in AFlags) and not AMeasure then
     FStringFormat.SetTrimming(StringTrimmingEllipsisCharacter)
   else
     FStringFormat.SetTrimming(StringTrimmingNone);

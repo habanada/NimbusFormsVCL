@@ -100,9 +100,9 @@ var
 begin
   FillChar(LInfo, SizeOf(LInfo), 0);
   LInfo.cbSize := SizeOf(LInfo);
-  LInfo.fMask := MIM_BACKGROUND;
+  LInfo.fMask := MIM_BACKGROUND or MIM_APPLYTOSUBMENUS;
   LInfo.hbrBack := FMenuBrush;
-  SetMenuInfo(MenuHandle, LInfo);
+  SetMenuInfo(Handle, LInfo);
 end;
 
 procedure TThemedPopupMenu.HookItems(const AParent: TMenuItem);

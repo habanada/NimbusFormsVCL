@@ -122,7 +122,7 @@ type
 implementation
 
 uses
-  System.Math;
+  System.Math, NimbusForms.Rendering.Types;
 
 constructor TCustomThemedTagInput.Create(AOwner: TComponent);
 begin
@@ -359,19 +359,25 @@ begin
     X := ScaleValue(FPadding);
     Y := ScaleValue(FPadding);
     H := ScaleValue(Max(8, FTagHeight - Ord(StyleMode = stCompact) * 4));
-    for I := 0 to FTags.Count - 1 do
-    begin
-      Canvas.Font.Assign(Font);
-    W := Canvas.TextWidth(FTags[I]) + ScaleValue(FCloseButtonWidth + FTextPadding * 2);
-      if (X + W > ClientWidth - ScaleValue(FPadding)) and (X > ScaleValue(FPadding)) then
+    RenderCanvas.BeginRender(Canvas);
+    try
+      for I := 0 to FTags.Count - 1 do
       begin
-        X := ScaleValue(FPadding);
-        Inc(Y, H + ScaleValue(FPadding));
+        W := RenderCanvas.MeasureText(FTags[I], Font, 0, [ntfSingleLine, ntfNoPrefix]).cx +
+          Max(ScaleValue(FCloseButtonWidth + FTextPadding * 2),
+            H div 3 + ScaleValue(FCloseButtonWidth) + ScaleValue(FTextPadding div 2) + 2);
+        if (X + W > ClientWidth - ScaleValue(FPadding)) and (X > ScaleValue(FPadding)) then
+        begin
+          X := ScaleValue(FPadding);
+          Inc(Y, H + ScaleValue(FPadding));
+        end;
+        TagRect := Rect(X, Y, X + W, Y + H);
+        FRects[I] := TagRect;
+        FCloseRects[I] := Rect(TagRect.Right - ScaleValue(FCloseButtonWidth) - ScaleValue(FTextPadding div 2), Y + (H - ScaleValue(FCloseSize)) div 2, TagRect.Right - ScaleValue(FCloseButtonWidth) - ScaleValue(FTextPadding div 2) + ScaleValue(FCloseSize), Y + (H + ScaleValue(FCloseSize)) div 2);
+        Inc(X, W + ScaleValue(FPadding));
       end;
-      TagRect := Rect(X, Y, X + W, Y + H);
-      FRects[I] := TagRect;
-      FCloseRects[I] := Rect(TagRect.Right - ScaleValue(FCloseButtonWidth) - ScaleValue(FTextPadding div 2), Y + (H - ScaleValue(FCloseSize)) div 2, TagRect.Right - ScaleValue(FCloseButtonWidth) - ScaleValue(FTextPadding div 2) + ScaleValue(FCloseSize), Y + (H + ScaleValue(FCloseSize)) div 2);
-      Inc(X, W + ScaleValue(FPadding));
+    finally
+      RenderCanvas.EndRender;
     end;
     if (X + ScaleValue(FTextBoxMinWidth) > ClientWidth - ScaleValue(FPadding)) and (X > ScaleValue(FPadding)) then
     begin
